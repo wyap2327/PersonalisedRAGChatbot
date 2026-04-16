@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Donna Carter (CUST-004)
+============================================================
+Name: Donna Carter
+Email: wendy01@example.com
+Membership Tier: Gold
+Loyalty Points Balance: 5210 points
+Total Lifetime Spend: £274.96
+Total Orders: 2
+Sport Interests: weightlifting, powerlifting, CrossFit, gym
+Preferred Brands: Nike, Under Armour, Gymshark
+Shoe Size (UK): 11
+Clothing Size: XL
+
+About This Customer:
+Donna is a serious gym-goer who trains six days a week focusing on powerlifting and CrossFit. They are a Gold-tier ShopNest member who regularly redeems loyalty points and values stable training shoes and compression base layers.
+
+Recent Purchases:
+  - Nike Metcon 9 Training Shoe
+  - Nike Therma-FIT Academy Drill Top
+  - Nike Therma-FIT Academy Drill Top
+  - Under Armour HeatGear Compression Top
+
+Recent Support Interactions:
+  [2025-08-20] RETURN: Returned Nike Metcon 9 (size 11) — manufacturing defect on the midsole. Replacement dispatched at no cost.
+  [2025-06-11] SUPPORT_QUERY: Asked how to redeem loyalty points. Walked through the checkout redemption process.
+  [2026-02-01] ORDER_QUERY: Confirmed points from January order credited within 24 hours of dispatch confirmation.

@@ -1,0 +1,252 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "membership_tier": "Gold",
+    "loyalty_points_balance": 3420,
+    "sport_interests": ["running", "road racing", "outdoor fitness"],
+    "preferred_brands": ["Nike", "Adidas", "ASICS"],
+    "shoe_size_uk": "6",
+    "clothing_size": "S",
+    "order_skus": [
+      "NIKE-AM270-001", "ADID-UB22-002", "ASIC-GN25-003",
+      "NIKE-PE-WT-013", "TNF-WW-MJ-016", "FITB-CHG6-BLK-018",
+      "NIKE-DFIT-MT-010", "ADID-OTR-WLT-011"
+    ],
+    "persona_summary": "{first_name} is a dedicated long-distance runner who trains 5 days a week and has completed several half-marathons. They are a Gold-tier ShopNest Rewards member who prioritises performance over price and regularly purchases premium running footwear and technical apparel.",
+    "past_interactions": [
+      {
+        "date": "2025-11-10",
+        "type": "return",
+        "detail": "Returned Adidas Ultraboost 22 (size 6) — too narrow. Exchanged for size 6.5 via new order."
+      },
+      {
+        "date": "2025-09-03",
+        "type": "support_query",
+        "detail": "Asked about loyalty points expiry. Confirmed Gold tier has 24-month expiry grace period."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-002",
+    "membership_tier": "Silver",
+    "loyalty_points_balance": 870,
+    "sport_interests": ["football", "gym", "5-a-side"],
+    "preferred_brands": ["Adidas", "Nike", "Under Armour"],
+    "shoe_size_uk": "10",
+    "clothing_size": "L",
+    "order_skus": [
+      "ADID-PRED-FG-008", "NIKE-MET9-009", "UA-HG-COMP-012",
+      "ADID-SQ21-MS-014", "NIKE-TFA-DT-017", "ADID-STAD2-GB-022"
+    ],
+    "persona_summary": "{first_name} plays 5-a-side football twice a week and attends the gym three times a week for strength training. They are a Silver-tier member who shops regularly during sale events and takes advantage of early access benefits.",
+    "past_interactions": [
+      {
+        "date": "2025-12-01",
+        "type": "support_query",
+        "detail": "Asked whether Adidas Predator boots are suitable for 3G artificial turf. Advised FG studs are not recommended for 3G — suggested AG variant."
+      },
+      {
+        "date": "2025-10-15",
+        "type": "order_query",
+        "detail": "Queried delayed delivery. Resolved — parcel was held at depot after missed delivery attempt."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-003",
+    "membership_tier": "Bronze",
+    "loyalty_points_balance": 145,
+    "sport_interests": ["yoga", "pilates", "light fitness"],
+    "preferred_brands": ["Gymshark", "Nike"],
+    "shoe_size_uk": "5",
+    "clothing_size": "XS",
+    "order_skus": [
+      "YNOW-YM-6MM-020", "GS-VS2-WL-015", "NIKE-HWSET-021", "CONV-CT-HI-005"
+    ],
+    "persona_summary": "{first_name} is a university student who recently started yoga and pilates classes. They are a Bronze-tier ShopNest member who shops on a budget and is responsive to discount codes and promotions.",
+    "past_interactions": [
+      {
+        "date": "2026-01-08",
+        "type": "support_query",
+        "detail": "Asked how to apply a discount code at checkout. Guided through the promo code field on the payment page."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-004",
+    "membership_tier": "Gold",
+    "loyalty_points_balance": 5210,
+    "sport_interests": ["weightlifting", "powerlifting", "CrossFit", "gym"],
+    "preferred_brands": ["Nike", "Under Armour", "Gymshark"],
+    "shoe_size_uk": "11",
+    "clothing_size": "XL",
+    "order_skus": [
+      "NIKE-MET9-009", "UA-HG-COMP-012", "GS-LSTP-019",
+      "ADID-STAD2-GB-022", "NIKE-TFA-DT-017", "ADID-SQ21-MS-014",
+      "FITB-CHG6-BLK-018"
+    ],
+    "persona_summary": "{first_name} is a serious gym-goer who trains six days a week focusing on powerlifting and CrossFit. They are a Gold-tier ShopNest member who regularly redeems loyalty points and values stable training shoes and compression base layers.",
+    "past_interactions": [
+      {
+        "date": "2025-08-20",
+        "type": "return",
+        "detail": "Returned Nike Metcon 9 (size 11) — manufacturing defect on the midsole. Replacement dispatched at no cost."
+      },
+      {
+        "date": "2025-06-11",
+        "type": "support_query",
+        "detail": "Asked how to redeem loyalty points. Walked through the checkout redemption process."
+      },
+      {
+        "date": "2026-02-01",
+        "type": "order_query",
+        "detail": "Confirmed points from January order credited within 24 hours of dispatch confirmation."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-005",
+    "membership_tier": "Silver",
+    "loyalty_points_balance": 1105,
+    "sport_interests": ["casual fitness", "walking", "lifestyle fashion"],
+    "preferred_brands": ["Nike", "Converse", "Vans"],
+    "shoe_size_uk": "5",
+    "clothing_size": "S",
+    "order_skus": [
+      "NIKE-AM270-001", "CONV-CT-HI-005", "VANS-OS-006",
+      "NIKE-AF1-007", "GS-VS2-WL-015"
+    ],
+    "persona_summary": "{first_name} is a lifestyle-focused shopper who buys sportswear primarily for everyday wear. They are a Silver-tier member with a preference for iconic trainer silhouettes and fashionable athleisure.",
+    "past_interactions": [
+      {
+        "date": "2025-11-28",
+        "type": "order_query",
+        "detail": "Asked about Black Friday delivery times. Advised of potential 1-2 day extension during peak period."
+      },
+      {
+        "date": "2025-07-04",
+        "type": "support_query",
+        "detail": "Asked whether Nike Air Force 1 runs true to size. Advised to order usual size — fit is standard."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-006",
+    "membership_tier": "Bronze",
+    "loyalty_points_balance": 60,
+    "sport_interests": ["casual jogging", "walking"],
+    "preferred_brands": ["New Balance", "Adidas"],
+    "shoe_size_uk": "9",
+    "clothing_size": "M",
+    "order_skus": ["NB-FFX1080-V13", "NIKE-DFIT-MT-010"],
+    "persona_summary": "{first_name} is an occasional shopper who jogs a few times a month for general fitness. They are a Bronze-tier member with a small order history and prefer comfortable running shoes without excessive features.",
+    "past_interactions": [
+      {
+        "date": "2026-01-20",
+        "type": "order_query",
+        "detail": "Asked why order tracking had not updated in 3 days. Investigation raised with Royal Mail — parcel located and delivered the following day."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-007",
+    "membership_tier": "Silver",
+    "loyalty_points_balance": 680,
+    "sport_interests": ["yoga", "pilates", "running", "wellness"],
+    "preferred_brands": ["Nike", "Gymshark", "Adidas"],
+    "shoe_size_uk": "6",
+    "clothing_size": "S",
+    "order_skus": [
+      "YNOW-YM-6MM-020", "GS-VS2-WL-015", "NIKE-PE-WT-013",
+      "ADID-OTR-WLT-011", "FITB-CHG6-BLK-018", "NIKE-HWSET-021",
+      "PUMA-VN2-004"
+    ],
+    "persona_summary": "{first_name} is a wellness-focused customer who combines running with yoga and pilates. They are a Silver-tier member who shops consistently across footwear and apparel and is close to achieving Gold tier.",
+    "past_interactions": [
+      {
+        "date": "2025-12-15",
+        "type": "support_query",
+        "detail": "Asked how many more points needed to reach Gold tier. Confirmed 2,000 points required in a 12-month period."
+      },
+      {
+        "date": "2025-10-02",
+        "type": "return",
+        "detail": "Returned Gymshark Vital Seamless Leggings (size M) — sizing too large. Replaced with size S via new order."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-008",
+    "membership_tier": "Gold",
+    "loyalty_points_balance": 2890,
+    "sport_interests": ["running", "gym", "football", "cycling"],
+    "preferred_brands": ["Nike", "Adidas", "ASICS", "The North Face"],
+    "shoe_size_uk": "9",
+    "clothing_size": "M",
+    "order_skus": [
+      "ASIC-GN25-003", "NIKE-MET9-009", "ADID-PRED-FG-008",
+      "TNF-WW-MJ-016", "UA-HG-COMP-012", "FITB-CHG6-BLK-018",
+      "ADID-STAD2-GB-022", "ADID-UB22-002", "ADID-SQ21-MS-014"
+    ],
+    "persona_summary": "{first_name} is a multi-sport enthusiast who trains across running, gym, football, and cycling throughout the week. They are a Gold-tier member who takes full advantage of Gold benefits including free express delivery and the annual £25 voucher.",
+    "past_interactions": [
+      {
+        "date": "2026-01-15",
+        "type": "support_query",
+        "detail": "Asked when the annual Gold member £25 voucher would be issued. Confirmed it is sent on the anniversary of the first purchase date."
+      },
+      {
+        "date": "2025-09-25",
+        "type": "order_query",
+        "detail": "Queried whether an order of £78 qualified for free express delivery. Confirmed Gold members receive free express delivery on orders over £75."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-009",
+    "membership_tier": "Bronze",
+    "loyalty_points_balance": 220,
+    "sport_interests": ["running", "gym", "general fitness"],
+    "preferred_brands": ["Nike", "Puma", "New Balance"],
+    "shoe_size_uk": "5",
+    "clothing_size": "XS",
+    "order_skus": [
+      "PUMA-VN2-004", "NIKE-PE-WT-013", "ADID-OTR-WLT-011", "NIKE-HWSET-021"
+    ],
+    "persona_summary": "{first_name} has recently taken up running as a hobby. They are a Bronze-tier member who is price-sensitive and tends to choose mid-range footwear. They recently joined the loyalty rewards programme.",
+    "past_interactions": [
+      {
+        "date": "2026-02-10",
+        "type": "support_query",
+        "detail": "Asked about the difference between standard and express delivery. Explained timelines, costs, and cut-off times."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-010",
+    "membership_tier": "Silver",
+    "loyalty_points_balance": 950,
+    "sport_interests": ["football", "gym", "strength training"],
+    "preferred_brands": ["Adidas", "Nike", "Gymshark", "Under Armour"],
+    "shoe_size_uk": "10",
+    "clothing_size": "L",
+    "order_skus": [
+      "ADID-PRED-FG-008", "NIKE-MET9-009", "UA-HG-COMP-012",
+      "GS-LSTP-019", "ADID-SQ21-MS-014", "NIKE-TFA-DT-017",
+      "ADID-STAD2-GB-022"
+    ],
+    "persona_summary": "{first_name} plays amateur football at weekends and trains at the gym four times a week focusing on strength and conditioning. They are a Silver-tier member who often asks for product advice before purchasing.",
+    "past_interactions": [
+      {
+        "date": "2026-01-05",
+        "type": "support_query",
+        "detail": "Asked whether the Nike Metcon 9 is suitable for both weightlifting and HIIT. Confirmed it is — flat heel for lifts, flexible forefoot for cardio."
+      },
+      {
+        "date": "2025-11-22",
+        "type": "order_query",
+        "detail": "Asked about the Christmas extended return period. Confirmed 60-day return window for items purchased between 1 November and 31 December."
+      }
+    ]
+  }
+]

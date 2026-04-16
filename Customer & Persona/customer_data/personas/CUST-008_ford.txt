@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Oliver Ford (CUST-008)
+============================================================
+Name: Oliver Ford
+Email: joycethomson@example.com
+Membership Tier: Gold
+Loyalty Points Balance: 2890 points
+Total Lifetime Spend: £987.88
+Total Orders: 5
+Sport Interests: running, gym, football, cycling
+Preferred Brands: Nike, Adidas, ASICS, The North Face
+Shoe Size (UK): 9
+Clothing Size: M
+
+About This Customer:
+Oliver is a multi-sport enthusiast who trains across running, gym, football, and cycling throughout the week. They are a Gold-tier member who takes full advantage of Gold benefits including free express delivery and the annual £25 voucher.
+
+Recent Purchases:
+  - Under Armour HeatGear Compression Top
+  - Adidas Squadra 21 Shorts (Men's)
+  - Under Armour HeatGear Compression Top
+  - Fitbit Charge 6
+  - Adidas Stadium II Gym Bag 34L
+
+Recent Support Interactions:
+  [2026-01-15] SUPPORT_QUERY: Asked when the annual Gold member £25 voucher would be issued. Confirmed it is sent on the anniversary of the first purchase date.
+  [2025-09-25] ORDER_QUERY: Queried whether an order of £78 qualified for free express delivery. Confirmed Gold members receive free express delivery on orders over £75.

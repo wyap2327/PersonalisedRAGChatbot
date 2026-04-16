@@ -1,0 +1,25 @@
+CUSTOMER PROFILE — Lauren Jackson (CUST-009)
+============================================================
+Name: Lauren Jackson
+Email: dmorton@example.com
+Membership Tier: Bronze
+Loyalty Points Balance: 220 points
+Total Lifetime Spend: £936.87
+Total Orders: 5
+Sport Interests: running, gym, general fitness
+Preferred Brands: Nike, Puma, New Balance
+Shoe Size (UK): 5
+Clothing Size: XS
+
+About This Customer:
+Lauren has recently taken up running as a hobby. They are a Bronze-tier member who is price-sensitive and tends to choose mid-range footwear. They recently joined the loyalty rewards programme.
+
+Recent Purchases:
+  - Nike Dri-FIT Headband and Wristband Set
+  - Adidas Own the Run Long Sleeve (Women's)
+  - Nike Phenom Elite Running Tights (Women's)
+  - Puma Velocity Nitro 2
+  - Adidas Own the Run Long Sleeve (Women's)
+
+Recent Support Interactions:
+  [2026-02-10] SUPPORT_QUERY: Asked about the difference between standard and express delivery. Explained timelines, costs, and cut-off times.

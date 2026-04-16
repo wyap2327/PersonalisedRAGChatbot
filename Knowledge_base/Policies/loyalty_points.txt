@@ -1,0 +1,116 @@
+LOYALTY POINTS PROGRAMME — SHOPNEST REWARDS
+Last Updated: January 2026
+
+=============================================================
+SECTION 1: OVERVIEW
+=============================================================
+
+The ShopNest Rewards programme allows customers to earn points on eligible purchases and redeem them for discounts on future orders. All registered ShopNest account holders are automatically enrolled in the programme at no cost.
+
+=============================================================
+SECTION 2: EARNING POINTS
+=============================================================
+
+Base Earning Rate:
+- Customers earn 1 point for every £1 spent on eligible purchases (rounded down to the nearest pound).
+- Points are calculated on the final order total after discounts and before delivery charges.
+- Example: An order totalling £47.60 earns 47 points.
+
+Bonus Points Opportunities:
+- Welcome Bonus: New account holders receive 100 bonus points upon creating an account and making their first purchase.
+- Birthday Bonus: Members receive 2x points on all purchases made during their birthday month (must have date of birth saved in account settings).
+- Referral Bonus: Earn 200 points for each friend you refer who creates an account and makes their first purchase. The referred friend also receives 100 bonus points.
+- Seasonal Promotions: Double or triple points events are held periodically (e.g., during ShopNest Anniversary Sale in March and during the Summer Sale in July). These are announced via email and on the website.
+- Product Reviews: Earn 25 points for each verified product review you submit (maximum 5 reviews per month, reviews must be at least 30 words).
+
+Ineligible Purchases:
+Points are not awarded on the following:
+- Gift card purchases
+- Delivery charges
+- Orders paid for entirely with Gift Cards
+- Orders that are subsequently returned or refunded (points from returned items are deducted)
+
+=============================================================
+SECTION 3: MEMBERSHIP TIERS
+=============================================================
+
+ShopNest Rewards has three membership tiers. Your tier is determined by the total points earned in the preceding 12 calendar months.
+
+Bronze (Default)
+- Requirement: 0–499 points earned in the last 12 months (or new members)
+- Benefits:
+  * Standard earning rate (1 point per £1 spent)
+  * Access to member-only sales
+  * Free standard delivery on orders over £50
+
+Silver
+- Requirement: 500–1,999 points earned in the last 12 months
+- Benefits:
+  * 1.25x earning rate (1.25 points per £1 spent)
+  * Early access to sales (24 hours before general public)
+  * Free standard delivery on orders over £40 (reduced threshold)
+  * Priority customer support (dedicated phone line, average wait time under 2 minutes)
+
+Gold
+- Requirement: 2,000+ points earned in the last 12 months
+- Benefits:
+  * 1.5x earning rate (1.5 points per £1 spent)
+  * Earliest access to sales (48 hours before general public)
+  * Free standard delivery on ALL orders (no minimum spend)
+  * Free express delivery on orders over £75
+  * Dedicated Gold member support line (average wait time under 1 minute)
+  * Exclusive Gold member discounts (minimum 10% off selected products each month)
+  * Annual gift: a £25 ShopNest voucher sent each year on the member's anniversary date
+
+Tier Review:
+- Tier status is reviewed on the 1st of each month based on the last 12 months of point-earning activity.
+- Customers are notified by email if their tier changes.
+- If a customer's points earning drops below the threshold, they will be downgraded at the next monthly review.
+
+=============================================================
+SECTION 4: REDEEMING POINTS
+=============================================================
+
+Point Value:
+- 100 points = £1 discount on a future order
+- Minimum redemption: 500 points (equivalent to £5 off)
+- Maximum redemption per order: 5,000 points (equivalent to £50 off)
+
+How to Redeem:
+1. Add items to your basket and proceed to checkout.
+2. On the payment page, you will see your available points balance.
+3. Enter the number of points you wish to redeem (in multiples of 100) or click "Use Maximum".
+4. The equivalent discount will be applied to your order total.
+5. Points cannot be redeemed in conjunction with certain promotional codes — a notification will appear at checkout if this applies.
+
+Important Redemption Rules:
+- Points can only be redeemed against the product cost, not delivery charges.
+- Partial redemption is allowed — you do not need to use all your points at once.
+- Points redeemed on an order that is subsequently returned will be reinstated to your account within 5 business days of the return being processed.
+
+=============================================================
+SECTION 5: POINTS EXPIRY
+=============================================================
+
+- Points expire if your account has no earning or redeeming activity for 18 consecutive months.
+- A reminder email is sent 60 days and 30 days before expiry.
+- Expired points cannot be reinstated.
+- Bronze and Silver members' points may also expire if the account is inactive; Gold members receive an additional 6-month grace period (24 months total before expiry).
+
+=============================================================
+SECTION 6: CHECKING YOUR POINTS BALANCE
+=============================================================
+
+- Log in to your account and navigate to "My Rewards" to view your current points balance, tier status, points history, and next tier threshold.
+- Points from a completed order are typically credited to your account within 24 hours of dispatch confirmation.
+- Points are withheld until the returns window closes (30 days) if an order is marked as partially returned.
+
+=============================================================
+SECTION 7: TERMS AND CONDITIONS
+=============================================================
+
+- ShopNest Rewards is available to UK residents aged 18 and over.
+- Points have no cash value and cannot be transferred between accounts.
+- ShopNest reserves the right to modify, suspend, or terminate the Rewards programme with 30 days' notice.
+- In cases of suspected fraud or abuse, ShopNest reserves the right to void points and suspend the account pending investigation.
+- Points are non-transferable and cannot be sold.

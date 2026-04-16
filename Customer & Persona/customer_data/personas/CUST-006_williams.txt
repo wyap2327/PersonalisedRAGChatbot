@@ -1,0 +1,24 @@
+CUSTOMER PROFILE — Katy Williams (CUST-006)
+============================================================
+Name: Katy Williams
+Email: esmith@example.com
+Membership Tier: Bronze
+Loyalty Points Balance: 60 points
+Total Lifetime Spend: £379.96
+Total Orders: 3
+Sport Interests: casual jogging, walking
+Preferred Brands: New Balance, Adidas
+Shoe Size (UK): 9
+Clothing Size: M
+
+About This Customer:
+Katy is an occasional shopper who jogs a few times a month for general fitness. They are a Bronze-tier member with a small order history and prefer comfortable running shoes without excessive features.
+
+Recent Purchases:
+  - Nike Dri-FIT Running T-Shirt (Men's)
+  - New Balance Fresh Foam X 1080v13
+  - New Balance Fresh Foam X 1080v13
+  - Nike Dri-FIT Running T-Shirt (Men's)
+
+Recent Support Interactions:
+  [2026-01-20] ORDER_QUERY: Asked why order tracking had not updated in 3 days. Investigation raised with Royal Mail — parcel located and delivered the following day.

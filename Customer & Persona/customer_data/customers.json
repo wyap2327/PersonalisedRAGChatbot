@@ -1,0 +1,1278 @@
+[
+  {
+    "customer_id": "CUST-001",
+    "personal_details": {
+      "first_name": "Ruth",
+      "last_name": "Griffiths",
+      "full_name": "Ruth Griffiths",
+      "email": "donaldlowe@example.org",
+      "phone": "+44(0)1914960386",
+      "date_of_birth": "1985-04-16",
+      "address": {
+        "line1": "Studio 40\nAmelia Manors",
+        "city": "Rickyberg",
+        "county": "Nottinghamshire",
+        "postcode": "CF1 1QQ",
+        "country": "United Kingdom"
+      },
+      "account_created": "2025-11-08"
+    },
+    "account": {
+      "membership_tier": "Gold",
+      "loyalty_points_balance": 3420,
+      "total_lifetime_spend": 444.96,
+      "total_orders": 2
+    },
+    "preferences": {
+      "sport_interests": [
+        "running",
+        "road racing",
+        "outdoor fitness"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Adidas",
+        "ASICS"
+      ],
+      "shoe_size_uk": "6",
+      "clothing_size": "S"
+    },
+    "order_history": [
+      {
+        "order_id": "SN433218",
+        "date": "2026-03-02",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "TNF-WW-MJ-016",
+            "product_name": "The North Face Windwall Running Jacket",
+            "price": 109.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 109.99,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 109
+      },
+      {
+        "order_id": "SN196001",
+        "date": "2025-11-20",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-UB22-002",
+            "product_name": "Adidas Ultraboost 22",
+            "price": 159.99,
+            "quantity": 1
+          },
+          {
+            "sku": "FITB-CHG6-BLK-018",
+            "product_name": "Fitbit Charge 6",
+            "price": 139.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-DFIT-MT-010",
+            "product_name": "Nike Dri-FIT Running T-Shirt (Men's)",
+            "price": 34.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 334.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 334
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2025-11-10",
+        "type": "return",
+        "detail": "Returned Adidas Ultraboost 22 (size 6) — too narrow. Exchanged for size 6.5 via new order."
+      },
+      {
+        "date": "2025-09-03",
+        "type": "support_query",
+        "detail": "Asked about loyalty points expiry. Confirmed Gold tier has 24-month expiry grace period."
+      }
+    ],
+    "persona_summary": "Ruth is a dedicated long-distance runner who trains 5 days a week and has completed several half-marathons. They are a Gold-tier ShopNest Rewards member who prioritises performance over price and regularly purchases premium running footwear and technical apparel."
+  },
+  {
+    "customer_id": "CUST-002",
+    "personal_details": {
+      "first_name": "Arthur",
+      "last_name": "Gough",
+      "full_name": "Arthur Gough",
+      "email": "adamsgregory@example.org",
+      "phone": "09098790316",
+      "date_of_birth": "1989-03-16",
+      "address": {
+        "line1": "Studio 52x\nKelly Grove",
+        "city": "New Heatherburgh",
+        "county": "Eilean Siar",
+        "postcode": "EH2R 4XJ",
+        "country": "United Kingdom"
+      },
+      "account_created": "2026-03-14"
+    },
+    "account": {
+      "membership_tier": "Silver",
+      "loyalty_points_balance": 870,
+      "total_lifetime_spend": 402.94,
+      "total_orders": 2
+    },
+    "preferences": {
+      "sport_interests": [
+        "football",
+        "gym",
+        "5-a-side"
+      ],
+      "preferred_brands": [
+        "Adidas",
+        "Nike",
+        "Under Armour"
+      ],
+      "shoe_size_uk": "10",
+      "clothing_size": "L"
+    },
+    "order_history": [
+      {
+        "order_id": "SN781618",
+        "date": "2026-03-12",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-SQ21-MS-014",
+            "product_name": "Adidas Squadra 21 Shorts (Men's)",
+            "price": 17.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-PRED-FG-008",
+            "product_name": "Adidas Predator Accuracy.3 FG Boots",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-TFA-DT-017",
+            "product_name": "Nike Therma-FIT Academy Drill Top",
+            "price": 54.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 147.97,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 147
+      },
+      {
+        "order_id": "SN495931",
+        "date": "2025-12-02",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-TFA-DT-017",
+            "product_name": "Nike Therma-FIT Academy Drill Top",
+            "price": 54.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-PRED-FG-008",
+            "product_name": "Adidas Predator Accuracy.3 FG Boots",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-MET9-009",
+            "product_name": "Nike Metcon 9 Training Shoe",
+            "price": 124.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 254.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 254
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2025-12-01",
+        "type": "support_query",
+        "detail": "Asked whether Adidas Predator boots are suitable for 3G artificial turf. Advised FG studs are not recommended for 3G — suggested AG variant."
+      },
+      {
+        "date": "2025-10-15",
+        "type": "order_query",
+        "detail": "Queried delayed delivery. Resolved — parcel was held at depot after missed delivery attempt."
+      }
+    ],
+    "persona_summary": "Arthur plays 5-a-side football twice a week and attends the gym three times a week for strength training. They are a Silver-tier member who shops regularly during sale events and takes advantage of early access benefits."
+  },
+  {
+    "customer_id": "CUST-003",
+    "personal_details": {
+      "first_name": "Victor",
+      "last_name": "Watts",
+      "full_name": "Victor Watts",
+      "email": "daveyjamie@example.org",
+      "phone": "(028) 9018269",
+      "date_of_birth": "1974-08-11",
+      "address": {
+        "line1": "Studio 9\nHill Plaza",
+        "city": "Lake Geoffreyside",
+        "county": "Surrey",
+        "postcode": "HR1M 2TA",
+        "country": "United Kingdom"
+      },
+      "account_created": "2024-05-29"
+    },
+    "account": {
+      "membership_tier": "Bronze",
+      "loyalty_points_balance": 145,
+      "total_lifetime_spend": 238.93,
+      "total_orders": 5
+    },
+    "preferences": {
+      "sport_interests": [
+        "yoga",
+        "pilates",
+        "light fitness"
+      ],
+      "preferred_brands": [
+        "Gymshark",
+        "Nike"
+      ],
+      "shoe_size_uk": "5",
+      "clothing_size": "XS"
+    },
+    "order_history": [
+      {
+        "order_id": "SN030564",
+        "date": "2026-02-08",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "CONV-CT-HI-005",
+            "product_name": "Converse Chuck Taylor All Star Hi",
+            "price": 64.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 64.99,
+        "delivery_method": "Express Delivery",
+        "points_earned": 64
+      },
+      {
+        "order_id": "SN139537",
+        "date": "2025-12-03",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "GS-VS2-WL-015",
+            "product_name": "Gymshark Vital Seamless 2.0 Leggings",
+            "price": 49.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 49.99,
+        "delivery_method": "Express Delivery",
+        "points_earned": 49
+      },
+      {
+        "order_id": "SN672423",
+        "date": "2025-11-04",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-HWSET-021",
+            "product_name": "Nike Dri-FIT Headband and Wristband Set",
+            "price": 16.99,
+            "quantity": 1
+          },
+          {
+            "sku": "YNOW-YM-6MM-020",
+            "product_name": "Yoga Mat — Non-Slip TPE 6mm",
+            "price": 29.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 46.98,
+        "delivery_method": "Express Delivery",
+        "points_earned": 46
+      },
+      {
+        "order_id": "SN884969",
+        "date": "2025-08-25",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "YNOW-YM-6MM-020",
+            "product_name": "Yoga Mat — Non-Slip TPE 6mm",
+            "price": 29.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 29.99,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 29
+      },
+      {
+        "order_id": "SN653287",
+        "date": "2025-06-04",
+        "status": "Dispatched",
+        "items": [
+          {
+            "sku": "NIKE-HWSET-021",
+            "product_name": "Nike Dri-FIT Headband and Wristband Set",
+            "price": 16.99,
+            "quantity": 1
+          },
+          {
+            "sku": "YNOW-YM-6MM-020",
+            "product_name": "Yoga Mat — Non-Slip TPE 6mm",
+            "price": 29.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 46.98,
+        "delivery_method": "Express Delivery",
+        "points_earned": 46
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2026-01-08",
+        "type": "support_query",
+        "detail": "Asked how to apply a discount code at checkout. Guided through the promo code field on the payment page."
+      }
+    ],
+    "persona_summary": "Victor is a university student who recently started yoga and pilates classes. They are a Bronze-tier ShopNest member who shops on a budget and is responsive to discount codes and promotions."
+  },
+  {
+    "customer_id": "CUST-004",
+    "personal_details": {
+      "first_name": "Donna",
+      "last_name": "Carter",
+      "full_name": "Donna Carter",
+      "email": "wendy01@example.com",
+      "phone": "+449098790430",
+      "date_of_birth": "1986-09-05",
+      "address": {
+        "line1": "7 Stacey Trafficway",
+        "city": "East Katy",
+        "county": "City of Edinburgh",
+        "postcode": "G4J 3XH",
+        "country": "United Kingdom"
+      },
+      "account_created": "2024-08-12"
+    },
+    "account": {
+      "membership_tier": "Gold",
+      "loyalty_points_balance": 5210,
+      "total_lifetime_spend": 274.96,
+      "total_orders": 2
+    },
+    "preferences": {
+      "sport_interests": [
+        "weightlifting",
+        "powerlifting",
+        "CrossFit",
+        "gym"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Under Armour",
+        "Gymshark"
+      ],
+      "shoe_size_uk": "11",
+      "clothing_size": "XL"
+    },
+    "order_history": [
+      {
+        "order_id": "SN814893",
+        "date": "2026-02-27",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-MET9-009",
+            "product_name": "Nike Metcon 9 Training Shoe",
+            "price": 124.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-TFA-DT-017",
+            "product_name": "Nike Therma-FIT Academy Drill Top",
+            "price": 54.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 179.98,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 179
+      },
+      {
+        "order_id": "SN252880",
+        "date": "2025-12-02",
+        "status": "Processing",
+        "items": [
+          {
+            "sku": "NIKE-TFA-DT-017",
+            "product_name": "Nike Therma-FIT Academy Drill Top",
+            "price": 54.99,
+            "quantity": 1
+          },
+          {
+            "sku": "UA-HG-COMP-012",
+            "product_name": "Under Armour HeatGear Compression Top",
+            "price": 39.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 94.98,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 94
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2025-08-20",
+        "type": "return",
+        "detail": "Returned Nike Metcon 9 (size 11) — manufacturing defect on the midsole. Replacement dispatched at no cost."
+      },
+      {
+        "date": "2025-06-11",
+        "type": "support_query",
+        "detail": "Asked how to redeem loyalty points. Walked through the checkout redemption process."
+      },
+      {
+        "date": "2026-02-01",
+        "type": "order_query",
+        "detail": "Confirmed points from January order credited within 24 hours of dispatch confirmation."
+      }
+    ],
+    "persona_summary": "Donna is a serious gym-goer who trains six days a week focusing on powerlifting and CrossFit. They are a Gold-tier ShopNest member who regularly redeems loyalty points and values stable training shoes and compression base layers."
+  },
+  {
+    "customer_id": "CUST-005",
+    "personal_details": {
+      "first_name": "Tracey",
+      "last_name": "Turner",
+      "full_name": "Tracey Turner",
+      "email": "joanquinn@example.org",
+      "phone": "01632 960031",
+      "date_of_birth": "1972-06-04",
+      "address": {
+        "line1": "Flat 8\nRicky Skyway",
+        "city": "Stevensberg",
+        "county": "Derry and Londonderry",
+        "postcode": "W3U 6HE",
+        "country": "United Kingdom"
+      },
+      "account_created": "2023-09-13"
+    },
+    "account": {
+      "membership_tier": "Silver",
+      "loyalty_points_balance": 1105,
+      "total_lifetime_spend": 439.95,
+      "total_orders": 2
+    },
+    "preferences": {
+      "sport_interests": [
+        "casual fitness",
+        "walking",
+        "lifestyle fashion"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Converse",
+        "Vans"
+      ],
+      "shoe_size_uk": "5",
+      "clothing_size": "S"
+    },
+    "order_history": [
+      {
+        "order_id": "SN578713",
+        "date": "2026-01-22",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "CONV-CT-HI-005",
+            "product_name": "Converse Chuck Taylor All Star Hi",
+            "price": 64.99,
+            "quantity": 1
+          },
+          {
+            "sku": "VANS-OS-006",
+            "product_name": "Vans Old Skool",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-AM270-001",
+            "product_name": "Nike Air Max 270",
+            "price": 129.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 269.97,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 269
+      },
+      {
+        "order_id": "SN315098",
+        "date": "2025-12-07",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "VANS-OS-006",
+            "product_name": "Vans Old Skool",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-AF1-007",
+            "product_name": "Nike Air Force 1 '07",
+            "price": 94.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 169.98,
+        "delivery_method": "Express Delivery",
+        "points_earned": 169
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2025-11-28",
+        "type": "order_query",
+        "detail": "Asked about Black Friday delivery times. Advised of potential 1-2 day extension during peak period."
+      },
+      {
+        "date": "2025-07-04",
+        "type": "support_query",
+        "detail": "Asked whether Nike Air Force 1 runs true to size. Advised to order usual size — fit is standard."
+      }
+    ],
+    "persona_summary": "Tracey is a lifestyle-focused shopper who buys sportswear primarily for everyday wear. They are a Silver-tier member with a preference for iconic trainer silhouettes and fashionable athleisure."
+  },
+  {
+    "customer_id": "CUST-006",
+    "personal_details": {
+      "first_name": "Katy",
+      "last_name": "Williams",
+      "full_name": "Katy Williams",
+      "email": "esmith@example.com",
+      "phone": "08081570810",
+      "date_of_birth": "2007-01-28",
+      "address": {
+        "line1": "3 Jane Oval",
+        "city": "Dobsonfurt",
+        "county": "Derbyshire",
+        "postcode": "S06 7NS",
+        "country": "United Kingdom"
+      },
+      "account_created": "2026-04-02"
+    },
+    "account": {
+      "membership_tier": "Bronze",
+      "loyalty_points_balance": 60,
+      "total_lifetime_spend": 379.96,
+      "total_orders": 3
+    },
+    "preferences": {
+      "sport_interests": [
+        "casual jogging",
+        "walking"
+      ],
+      "preferred_brands": [
+        "New Balance",
+        "Adidas"
+      ],
+      "shoe_size_uk": "9",
+      "clothing_size": "M"
+    },
+    "order_history": [
+      {
+        "order_id": "SN667010",
+        "date": "2026-02-03",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-DFIT-MT-010",
+            "product_name": "Nike Dri-FIT Running T-Shirt (Men's)",
+            "price": 34.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NB-FFX1080-V13",
+            "product_name": "New Balance Fresh Foam X 1080v13",
+            "price": 154.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 189.98,
+        "delivery_method": "Express Delivery",
+        "points_earned": 189
+      },
+      {
+        "order_id": "SN651333",
+        "date": "2025-12-13",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NB-FFX1080-V13",
+            "product_name": "New Balance Fresh Foam X 1080v13",
+            "price": 154.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 154.99,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 154
+      },
+      {
+        "order_id": "SN872624",
+        "date": "2025-10-24",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-DFIT-MT-010",
+            "product_name": "Nike Dri-FIT Running T-Shirt (Men's)",
+            "price": 34.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 34.99,
+        "delivery_method": "Express Delivery",
+        "points_earned": 34
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2026-01-20",
+        "type": "order_query",
+        "detail": "Asked why order tracking had not updated in 3 days. Investigation raised with Royal Mail — parcel located and delivered the following day."
+      }
+    ],
+    "persona_summary": "Katy is an occasional shopper who jogs a few times a month for general fitness. They are a Bronze-tier member with a small order history and prefer comfortable running shoes without excessive features."
+  },
+  {
+    "customer_id": "CUST-007",
+    "personal_details": {
+      "first_name": "Suzanne",
+      "last_name": "Adams",
+      "full_name": "Suzanne Adams",
+      "email": "bartonbrian@example.net",
+      "phone": "(0114)4960361",
+      "date_of_birth": "1987-01-16",
+      "address": {
+        "line1": "169 Hudson Ford",
+        "city": "Shaneview",
+        "county": "Anglesey",
+        "postcode": "M75 0TZ",
+        "country": "United Kingdom"
+      },
+      "account_created": "2025-09-06"
+    },
+    "account": {
+      "membership_tier": "Silver",
+      "loyalty_points_balance": 680,
+      "total_lifetime_spend": 444.92,
+      "total_orders": 3
+    },
+    "preferences": {
+      "sport_interests": [
+        "yoga",
+        "pilates",
+        "running",
+        "wellness"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Gymshark",
+        "Adidas"
+      ],
+      "shoe_size_uk": "6",
+      "clothing_size": "S"
+    },
+    "order_history": [
+      {
+        "order_id": "SN723430",
+        "date": "2026-01-24",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "YNOW-YM-6MM-020",
+            "product_name": "Yoga Mat — Non-Slip TPE 6mm",
+            "price": 29.99,
+            "quantity": 1
+          },
+          {
+            "sku": "GS-VS2-WL-015",
+            "product_name": "Gymshark Vital Seamless 2.0 Leggings",
+            "price": 49.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 154.97,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 154
+      },
+      {
+        "order_id": "SN980500",
+        "date": "2026-01-12",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 119.98,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 119
+      },
+      {
+        "order_id": "SN978820",
+        "date": "2025-10-23",
+        "status": "Processing",
+        "items": [
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "GS-VS2-WL-015",
+            "product_name": "Gymshark Vital Seamless 2.0 Leggings",
+            "price": 49.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 169.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 169
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2025-12-15",
+        "type": "support_query",
+        "detail": "Asked how many more points needed to reach Gold tier. Confirmed 2,000 points required in a 12-month period."
+      },
+      {
+        "date": "2025-10-02",
+        "type": "return",
+        "detail": "Returned Gymshark Vital Seamless Leggings (size M) — sizing too large. Replaced with size S via new order."
+      }
+    ],
+    "persona_summary": "Suzanne is a wellness-focused customer who combines running with yoga and pilates. They are a Silver-tier member who shops consistently across footwear and apparel and is close to achieving Gold tier."
+  },
+  {
+    "customer_id": "CUST-008",
+    "personal_details": {
+      "first_name": "Oliver",
+      "last_name": "Ford",
+      "full_name": "Oliver Ford",
+      "email": "joycethomson@example.com",
+      "phone": "+44(0)161 496 0740",
+      "date_of_birth": "1976-07-27",
+      "address": {
+        "line1": "Flat 00v\nKim Greens",
+        "city": "Lake Angela",
+        "county": "Fife",
+        "postcode": "KW8A 1FX",
+        "country": "United Kingdom"
+      },
+      "account_created": "2023-06-10"
+    },
+    "account": {
+      "membership_tier": "Gold",
+      "loyalty_points_balance": 2890,
+      "total_lifetime_spend": 987.88,
+      "total_orders": 5
+    },
+    "preferences": {
+      "sport_interests": [
+        "running",
+        "gym",
+        "football",
+        "cycling"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Adidas",
+        "ASICS",
+        "The North Face"
+      ],
+      "shoe_size_uk": "9",
+      "clothing_size": "M"
+    },
+    "order_history": [
+      {
+        "order_id": "SN384251",
+        "date": "2026-03-09",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "UA-HG-COMP-012",
+            "product_name": "Under Armour HeatGear Compression Top",
+            "price": 39.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 39.99,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 39
+      },
+      {
+        "order_id": "SN354278",
+        "date": "2025-12-10",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-SQ21-MS-014",
+            "product_name": "Adidas Squadra 21 Shorts (Men's)",
+            "price": 17.99,
+            "quantity": 1
+          },
+          {
+            "sku": "UA-HG-COMP-012",
+            "product_name": "Under Armour HeatGear Compression Top",
+            "price": 39.99,
+            "quantity": 1
+          },
+          {
+            "sku": "FITB-CHG6-BLK-018",
+            "product_name": "Fitbit Charge 6",
+            "price": 139.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 197.97,
+        "delivery_method": "Express Delivery",
+        "points_earned": 197
+      },
+      {
+        "order_id": "SN498084",
+        "date": "2025-11-09",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-STAD2-GB-022",
+            "product_name": "Adidas Stadium II Gym Bag 34L",
+            "price": 39.99,
+            "quantity": 1
+          },
+          {
+            "sku": "FITB-CHG6-BLK-018",
+            "product_name": "Fitbit Charge 6",
+            "price": 139.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-MET9-009",
+            "product_name": "Nike Metcon 9 Training Shoe",
+            "price": 124.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 304.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 304
+      },
+      {
+        "order_id": "SN124118",
+        "date": "2025-07-25",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-MET9-009",
+            "product_name": "Nike Metcon 9 Training Shoe",
+            "price": 124.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ASIC-GN25-003",
+            "product_name": "ASICS Gel-Nimbus 25",
+            "price": 164.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 289.98,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 289
+      },
+      {
+        "order_id": "SN244935",
+        "date": "2025-07-16",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-PRED-FG-008",
+            "product_name": "Adidas Predator Accuracy.3 FG Boots",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-STAD2-GB-022",
+            "product_name": "Adidas Stadium II Gym Bag 34L",
+            "price": 39.99,
+            "quantity": 1
+          },
+          {
+            "sku": "UA-HG-COMP-012",
+            "product_name": "Under Armour HeatGear Compression Top",
+            "price": 39.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 154.97,
+        "delivery_method": "Express Delivery",
+        "points_earned": 154
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2026-01-15",
+        "type": "support_query",
+        "detail": "Asked when the annual Gold member £25 voucher would be issued. Confirmed it is sent on the anniversary of the first purchase date."
+      },
+      {
+        "date": "2025-09-25",
+        "type": "order_query",
+        "detail": "Queried whether an order of £78 qualified for free express delivery. Confirmed Gold members receive free express delivery on orders over £75."
+      }
+    ],
+    "persona_summary": "Oliver is a multi-sport enthusiast who trains across running, gym, football, and cycling throughout the week. They are a Gold-tier member who takes full advantage of Gold benefits including free express delivery and the annual £25 voucher."
+  },
+  {
+    "customer_id": "CUST-009",
+    "personal_details": {
+      "first_name": "Lauren",
+      "last_name": "Jackson",
+      "full_name": "Lauren Jackson",
+      "email": "dmorton@example.com",
+      "phone": "+44121 496 0330",
+      "date_of_birth": "1983-06-07",
+      "address": {
+        "line1": "Flat 41X\nParsons Pass",
+        "city": "Daviesside",
+        "county": "Worcestershire",
+        "postcode": "E4 9LB",
+        "country": "United Kingdom"
+      },
+      "account_created": "2023-10-01"
+    },
+    "account": {
+      "membership_tier": "Bronze",
+      "loyalty_points_balance": 220,
+      "total_lifetime_spend": 936.87,
+      "total_orders": 5
+    },
+    "preferences": {
+      "sport_interests": [
+        "running",
+        "gym",
+        "general fitness"
+      ],
+      "preferred_brands": [
+        "Nike",
+        "Puma",
+        "New Balance"
+      ],
+      "shoe_size_uk": "5",
+      "clothing_size": "XS"
+    },
+    "order_history": [
+      {
+        "order_id": "SN262045",
+        "date": "2026-02-10",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "NIKE-HWSET-021",
+            "product_name": "Nike Dri-FIT Headband and Wristband Set",
+            "price": 16.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 136.97,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 136
+      },
+      {
+        "order_id": "SN053315",
+        "date": "2025-11-28",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "PUMA-VN2-004",
+            "product_name": "Puma Velocity Nitro 2",
+            "price": 109.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 229.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 229
+      },
+      {
+        "order_id": "SN869232",
+        "date": "2025-10-21",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "PUMA-VN2-004",
+            "product_name": "Puma Velocity Nitro 2",
+            "price": 109.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 184.98,
+        "delivery_method": "Standard Delivery",
+        "points_earned": 184
+      },
+      {
+        "order_id": "SN260256",
+        "date": "2025-07-24",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "PUMA-VN2-004",
+            "product_name": "Puma Velocity Nitro 2",
+            "price": 109.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 154.98,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 154
+      },
+      {
+        "order_id": "SN342160",
+        "date": "2025-05-26",
+        "status": "Dispatched",
+        "items": [
+          {
+            "sku": "NIKE-PE-WT-013",
+            "product_name": "Nike Phenom Elite Running Tights (Women's)",
+            "price": 74.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-OTR-WLT-011",
+            "product_name": "Adidas Own the Run Long Sleeve (Women's)",
+            "price": 44.99,
+            "quantity": 1
+          },
+          {
+            "sku": "PUMA-VN2-004",
+            "product_name": "Puma Velocity Nitro 2",
+            "price": 109.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 229.97,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 229
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2026-02-10",
+        "type": "support_query",
+        "detail": "Asked about the difference between standard and express delivery. Explained timelines, costs, and cut-off times."
+      }
+    ],
+    "persona_summary": "Lauren has recently taken up running as a hobby. They are a Bronze-tier member who is price-sensitive and tends to choose mid-range footwear. They recently joined the loyalty rewards programme."
+  },
+  {
+    "customer_id": "CUST-010",
+    "personal_details": {
+      "first_name": "Jodie",
+      "last_name": "Williams",
+      "full_name": "Jodie Williams",
+      "email": "dorothy65@example.com",
+      "phone": "+44(0)29 2018482",
+      "date_of_birth": "1983-05-06",
+      "address": {
+        "line1": "Studio 62N\nStevenson Village",
+        "city": "West Mitchellborough",
+        "county": "Denbighshire",
+        "postcode": "N7H 3WU",
+        "country": "United Kingdom"
+      },
+      "account_created": "2024-01-04"
+    },
+    "account": {
+      "membership_tier": "Silver",
+      "loyalty_points_balance": 950,
+      "total_lifetime_spend": 258.94,
+      "total_orders": 4
+    },
+    "preferences": {
+      "sport_interests": [
+        "football",
+        "gym",
+        "strength training"
+      ],
+      "preferred_brands": [
+        "Adidas",
+        "Nike",
+        "Gymshark",
+        "Under Armour"
+      ],
+      "shoe_size_uk": "10",
+      "clothing_size": "L"
+    },
+    "order_history": [
+      {
+        "order_id": "SN569816",
+        "date": "2026-03-08",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-SQ21-MS-014",
+            "product_name": "Adidas Squadra 21 Shorts (Men's)",
+            "price": 17.99,
+            "quantity": 1
+          },
+          {
+            "sku": "ADID-STAD2-GB-022",
+            "product_name": "Adidas Stadium II Gym Bag 34L",
+            "price": 39.99,
+            "quantity": 1
+          },
+          {
+            "sku": "NIKE-MET9-009",
+            "product_name": "Nike Metcon 9 Training Shoe",
+            "price": 124.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 182.97,
+        "delivery_method": "Express Delivery",
+        "points_earned": 182
+      },
+      {
+        "order_id": "SN934060",
+        "date": "2025-11-28",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-SQ21-MS-014",
+            "product_name": "Adidas Squadra 21 Shorts (Men's)",
+            "price": 17.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 17.99,
+        "delivery_method": "Next Day Delivery",
+        "points_earned": 17
+      },
+      {
+        "order_id": "SN883561",
+        "date": "2025-10-28",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "ADID-SQ21-MS-014",
+            "product_name": "Adidas Squadra 21 Shorts (Men's)",
+            "price": 17.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 17.99,
+        "delivery_method": "Express Delivery",
+        "points_earned": 17
+      },
+      {
+        "order_id": "SN595148",
+        "date": "2025-07-24",
+        "status": "Delivered",
+        "items": [
+          {
+            "sku": "UA-HG-COMP-012",
+            "product_name": "Under Armour HeatGear Compression Top",
+            "price": 39.99,
+            "quantity": 1
+          }
+        ],
+        "order_total": 39.99,
+        "delivery_method": "Express Delivery",
+        "points_earned": 39
+      }
+    ],
+    "past_interactions": [
+      {
+        "date": "2026-01-05",
+        "type": "support_query",
+        "detail": "Asked whether the Nike Metcon 9 is suitable for both weightlifting and HIIT. Confirmed it is — flat heel for lifts, flexible forefoot for cardio."
+      },
+      {
+        "date": "2025-11-22",
+        "type": "order_query",
+        "detail": "Asked about the Christmas extended return period. Confirmed 60-day return window for items purchased between 1 November and 31 December."
+      }
+    ],
+    "persona_summary": "Jodie plays amateur football at weekends and trains at the gym four times a week focusing on strength and conditioning. They are a Silver-tier member who often asks for product advice before purchasing."
+  }
+]

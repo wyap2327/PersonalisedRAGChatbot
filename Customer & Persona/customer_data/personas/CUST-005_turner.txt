@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Tracey Turner (CUST-005)
+============================================================
+Name: Tracey Turner
+Email: joanquinn@example.org
+Membership Tier: Silver
+Loyalty Points Balance: 1105 points
+Total Lifetime Spend: £439.95
+Total Orders: 2
+Sport Interests: casual fitness, walking, lifestyle fashion
+Preferred Brands: Nike, Converse, Vans
+Shoe Size (UK): 5
+Clothing Size: S
+
+About This Customer:
+Tracey is a lifestyle-focused shopper who buys sportswear primarily for everyday wear. They are a Silver-tier member with a preference for iconic trainer silhouettes and fashionable athleisure.
+
+Recent Purchases:
+  - Converse Chuck Taylor All Star Hi
+  - Vans Old Skool
+  - Nike Air Max 270
+  - Vans Old Skool
+  - Nike Air Force 1 '07
+
+Recent Support Interactions:
+  [2025-11-28] ORDER_QUERY: Asked about Black Friday delivery times. Advised of potential 1-2 day extension during peak period.
+  [2025-07-04] SUPPORT_QUERY: Asked whether Nike Air Force 1 runs true to size. Advised to order usual size — fit is standard.
