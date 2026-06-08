@@ -2,7 +2,7 @@
 agentic_rag.py
 
 Agentic RAG pipeline.
-A LangChain ReAct agent that autonomously decides how to retrieve information
+A LangGraph ReAct agent that autonomously decides how to retrieve information
 using two tools:
   - SearchKnowledgeBase : semantic search over ChromaDB
   - GetFullDocument     : retrieves the full source document by filename
@@ -17,12 +17,11 @@ import os
 import time
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+from langchain_ollama import ChatOllama
 from langchain.tools import tool
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain_community.llms import Ollama
-from langchain_core.prompts import PromptTemplate
-from pipelines.shared_pipeline import shared_pipeline
-from pipelines.llm import generate_response, MODEL
+from langchain_core.messages import ToolMessage
+from langgraph.prebuilt import create_react_agent
+from pipelines.llm import MODEL
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
@@ -30,7 +29,6 @@ KNOWLEDGE_BASE_DIR = os.path.join(BASE_DIR, "Knowledge_base")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 5
 
-# Global vectorstore reference used inside tools
 _vectorstore = None
 
 
@@ -82,31 +80,6 @@ def GetFullDocument(filename: str) -> str:
     return f"Document '{filename}' not found."
 
 
-REACT_PROMPT = PromptTemplate.from_template("""You are a customer support assistant for ShopNest, \
-a UK sportswear and footwear e-commerce store.
-Answer the customer's question using the tools available to you.
-Think step by step. Use tools to find relevant information before answering.
-
-You have access to the following tools:
-{tools}
-
-Use the following format:
-
-Question: the input question you must answer
-Thought: think about what information you need
-Action: the action to take, should be one of [{tool_names}]
-Action Input: the input to the action
-Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can repeat up to 3 times)
-Thought: I now have enough information to answer the question
-Final Answer: the final answer to the customer's question
-
-Begin!
-
-Question: {input}
-Thought: {agent_scratchpad}""")
-
-
 def run(query: str, vectorstore=None) -> dict:
     """
     Run the Agentic RAG pipeline.
@@ -116,7 +89,7 @@ def run(query: str, vectorstore=None) -> dict:
         vectorstore : optional preloaded ChromaDB instance
 
     Returns:
-        dict with keys: response, context, latency_seconds, agent_steps
+        dict with keys: response, context, latency_seconds
     """
     start = time.perf_counter()
 
@@ -125,26 +98,18 @@ def run(query: str, vectorstore=None) -> dict:
         _vectorstore = vectorstore
 
     tools = [SearchKnowledgeBase, GetFullDocument]
+    llm = ChatOllama(model=MODEL, temperature=0)
+    agent = create_react_agent(llm, tools)
 
-    llm = Ollama(model=MODEL, temperature=0)
-
-    agent = create_react_agent(llm=llm, tools=tools, prompt=REACT_PROMPT)
-
-    agent_executor = AgentExecutor(
-        agent=agent,
-        tools=tools,
-        verbose=False,
-        max_iterations=4,
-        handle_parsing_errors=True,
+    result = agent.invoke(
+        {"messages": [{"role": "user", "content": query}]},
+        config={"recursion_limit": 10},
     )
 
-    result = agent_executor.invoke({"input": query})
-    agent_response = result.get("output", "")
+    agent_response = result["messages"][-1].content
 
-    # Run retrieved content through shared pipeline for consistency
-    retrieved = SearchKnowledgeBase.invoke(query)
-    chunks = retrieved.split("\n\n---\n\n")
-    context = shared_pipeline(query, chunks)
+    tool_outputs = [m.content for m in result["messages"] if isinstance(m, ToolMessage)]
+    context = "\n\n".join(tool_outputs) if tool_outputs else "No tool calls made."
 
     latency = round(time.perf_counter() - start, 3)
 
@@ -153,7 +118,6 @@ def run(query: str, vectorstore=None) -> dict:
         "query": query,
         "response": agent_response,
         "context": context,
-        "retrieved_chunks": chunks,
         "latency_seconds": latency,
     }
 

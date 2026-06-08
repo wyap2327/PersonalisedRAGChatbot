@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Georgia Price (CUST-005)
+------------------------------------------------------------
+Name: Georgia Price
+Email: rickyking@example.org
+Membership Tier: Silver
+Loyalty Points Balance: 1926 points
+Total Lifetime Spend: £479.94
+Total Orders: 3
+Sport Interests: casual fitness, walking, lifestyle fashion
+Preferred Brands: Nike, Converse, Vans
+Shoe Size (UK): 4
+Clothing Size: M
+
+About This Customer:
+Georgia buys sportswear mainly for everyday wear and favours iconic trainer styles.
+
+Recent Purchases:
+  - Nike Air Max 270
+  - Converse Chuck Taylor All Star Hi
+  - Nike Air Force 1 '07
+  - Gymshark Vital Seamless 2.0 Leggings
+  - Converse Chuck Taylor All Star Hi
+
+Recent Support Interactions:
+  [2025-11-28] ORDER_QUERY: Asked about Black Friday delivery times.
+  [2025-07-04] SUPPORT_QUERY: Asked whether Nike Air Force 1 runs true to size.

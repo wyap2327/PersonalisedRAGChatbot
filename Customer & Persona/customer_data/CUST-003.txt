@@ -1,0 +1,24 @@
+CUSTOMER PROFILE — Victor Watts (CUST-003)
+------------------------------------------------------------
+Name: Victor Watts
+Email: ievans@example.net
+Membership Tier: Bronze
+Loyalty Points Balance: 2451 points
+Total Lifetime Spend: £226.95
+Total Orders: 4
+Sport Interests: yoga, pilates, light fitness
+Preferred Brands: Gymshark, Nike
+Shoe Size (UK): 9
+Clothing Size: XL
+
+About This Customer:
+Victor is a university student who recently started yoga and pilates, shopping on a budget.
+
+Recent Purchases:
+  - Gymshark Vital Seamless 2.0 Leggings
+  - Converse Chuck Taylor All Star Hi
+  - Nike Dri-FIT Headband and Wristband Set
+  - Yoga Mat — Non-Slip TPE 6mm
+
+Recent Support Interactions:
+  [2026-01-08] SUPPORT_QUERY: Asked how to apply a discount code at checkout.

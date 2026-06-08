@@ -1,0 +1,27 @@
+CUSTOMER PROFILE — Sandra Harper (CUST-004)
+------------------------------------------------------------
+Name: Sandra Harper
+Email: griffithslinda@example.com
+Membership Tier: Gold
+Loyalty Points Balance: 1382 points
+Total Lifetime Spend: £347.95
+Total Orders: 3
+Sport Interests: weightlifting, powerlifting, CrossFit, gym
+Preferred Brands: Nike, Under Armour, Gymshark
+Shoe Size (UK): 9
+Clothing Size: M
+
+About This Customer:
+Sandra trains six days a week across powerlifting and CrossFit and regularly redeems loyalty points.
+
+Recent Purchases:
+  - Nike Metcon 9 Training Shoe
+  - Nike Metcon 9 Training Shoe
+  - Under Armour HeatGear Compression Top
+  - Adidas Stadium II Gym Bag 34L
+  - Adidas Squadra 21 Shorts (Men's)
+
+Recent Support Interactions:
+  [2025-08-20] RETURN: Returned Nike Metcon 9 (size 11) — manufacturing defect on the midsole.
+  [2025-06-11] SUPPORT_QUERY: Asked how to redeem loyalty points at checkout.
+  [2026-02-01] ORDER_QUERY: Queried when points from January order would be credited.

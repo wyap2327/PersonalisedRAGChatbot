@@ -1,9 +1,4 @@
 """
-app.py
-
-ShopNest Customer Support Chatbot — Streamlit Interface
-Dissertation evaluation app for comparing 5 RAG strategies.
-
 Run: streamlit run app.py
 Requirements: pip install streamlit
 """
@@ -11,6 +6,7 @@ Requirements: pip install streamlit
 import time
 import json
 import os
+from datetime import datetime
 import streamlit as st
 
 # ── Page config ───────────────────────────────────────────────────────────────
@@ -22,6 +18,9 @@ st.set_page_config(
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CUSTOMERS_JSON = os.path.join(BASE_DIR, "Customer & Persona", "customer_data", "customers.json")
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
+os.makedirs(LOGS_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOGS_DIR, "session_log.jsonl")
 
 # MS Forms survey link — replace with your actual link
 SURVEY_LINK = "https://forms.office.com/your-survey-link-here"
@@ -58,6 +57,23 @@ PIPELINE_DESCRIPTIONS = {
 }
 
 
+# ── Logging ───────────────────────────────────────────────────────────────────
+def log_interaction(participant_id: str, customer_id: str, pipeline: str, query: str, result: dict):
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "participant_id": participant_id,
+        "customer_id": customer_id,
+        "pipeline": pipeline,
+        "query": query,
+        "response": result.get("response", ""),
+        "latency_seconds": result.get("latency_seconds", 0),
+        "enriched_query": result.get("enriched_query"),
+        "persona_chunks": result.get("persona_chunks"),
+    }
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+
+
 # ── Load customers ─────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_customers():
@@ -83,6 +99,22 @@ def load_vectorstore():
 
 
 @st.cache_resource
+def load_persona_vectorstore():
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_community.vectorstores import Chroma
+    embeddings = HuggingFaceEmbeddings(
+        model_name="BAAI/bge-base-en-v1.5",
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True},
+    )
+    return Chroma(
+        collection_name="customer_personas",
+        persist_directory=os.path.join(BASE_DIR, "chroma_db", "customer_personas"),
+        embedding_function=embeddings,
+    )
+
+
+@st.cache_resource
 def load_bm25_index():
     vs = load_vectorstore()
     from pipelines.hybrid_rag import build_bm25_index
@@ -103,7 +135,7 @@ def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
 
     elif pipeline_name == "Contextual RAG":
         from pipelines.contextual_rag import run
-        return run(query=query, customer_id=customer_id, vectorstore=vs)
+        return run(query=query, customer_id=customer_id, vectorstore=vs, persona_vectorstore=load_persona_vectorstore())
 
     elif pipeline_name == "Hybrid RAG":
         from pipelines.hybrid_rag import run
@@ -242,6 +274,14 @@ def chat_page():
                 )
             response = result.get("response", "Sorry, I could not generate a response.")
             latency = result.get("latency_seconds", 0)
+
+            log_interaction(
+                participant_id=st.session_state.participant_id,
+                customer_id=st.session_state.customer_id,
+                pipeline=st.session_state.selected_pipeline,
+                query=prompt,
+                result=result,
+            )
 
             st.markdown(response)
             st.caption(f"Response time: {latency}s")

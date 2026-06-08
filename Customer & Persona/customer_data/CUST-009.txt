@@ -1,0 +1,25 @@
+CUSTOMER PROFILE — Hollie Cooke (CUST-009)
+------------------------------------------------------------
+Name: Hollie Cooke
+Email: vsimpson@example.org
+Membership Tier: Bronze
+Loyalty Points Balance: 4697 points
+Total Lifetime Spend: £319.95
+Total Orders: 3
+Sport Interests: running, gym, general fitness
+Preferred Brands: Nike, Puma, New Balance
+Shoe Size (UK): 5
+Clothing Size: XS
+
+About This Customer:
+Hollie recently took up running and tends to choose mid-range footwear on a budget.
+
+Recent Purchases:
+  - Nike Phenom Elite Running Tights (Women's)
+  - Adidas Own the Run Long Sleeve (Women's)
+  - Adidas Own the Run Long Sleeve (Women's)
+  - Puma Velocity Nitro 2
+  - Adidas Own the Run Long Sleeve (Women's)
+
+Recent Support Interactions:
+  [2026-02-10] SUPPORT_QUERY: Asked about the difference between standard and express delivery.

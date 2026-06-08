@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Debra Bailey (CUST-008)
+------------------------------------------------------------
+Name: Debra Bailey
+Email: glennmartin@example.net
+Membership Tier: Gold
+Loyalty Points Balance: 5172 points
+Total Lifetime Spend: £367.95
+Total Orders: 2
+Sport Interests: running, gym, football, cycling
+Preferred Brands: Nike, Adidas, ASICS, The North Face
+Shoe Size (UK): 8
+Clothing Size: XL
+
+About This Customer:
+Debra trains across running, gym, football, and cycling and makes full use of Gold member benefits.
+
+Recent Purchases:
+  - Adidas Predator Accuracy.3 FG Boots
+  - Adidas Ultraboost 22
+  - Under Armour HeatGear Compression Top
+  - Adidas Predator Accuracy.3 FG Boots
+  - Adidas Squadra 21 Shorts (Men's)
+
+Recent Support Interactions:
+  [2026-01-15] SUPPORT_QUERY: Asked when the annual Gold member £25 voucher would be issued.
+  [2025-09-25] ORDER_QUERY: Asked whether an order of £78 qualified for free express delivery.

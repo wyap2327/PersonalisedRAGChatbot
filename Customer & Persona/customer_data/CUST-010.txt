@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Hugh White (CUST-010)
+------------------------------------------------------------
+Name: Hugh White
+Email: juliewilliams@example.net
+Membership Tier: Silver
+Loyalty Points Balance: 2080 points
+Total Lifetime Spend: £483.89
+Total Orders: 5
+Sport Interests: football, gym, strength training
+Preferred Brands: Adidas, Nike, Gymshark, Under Armour
+Shoe Size (UK): 7
+Clothing Size: XS
+
+About This Customer:
+Hugh plays amateur football at weekends and lifts four times a week, often asking for product advice before buying.
+
+Recent Purchases:
+  - Adidas Stadium II Gym Bag 34L
+  - Gymshark Lifting Straps
+  - Adidas Squadra 21 Shorts (Men's)
+  - Nike Metcon 9 Training Shoe
+  - Gymshark Lifting Straps
+
+Recent Support Interactions:
+  [2026-01-05] SUPPORT_QUERY: Asked whether the Nike Metcon 9 is suitable for both weightlifting and HIIT.
+  [2025-11-22] ORDER_QUERY: Asked about the Christmas extended return period.

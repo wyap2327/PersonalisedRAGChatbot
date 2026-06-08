@@ -1,0 +1,24 @@
+CUSTOMER PROFILE — Rosemary Wright (CUST-007)
+------------------------------------------------------------
+Name: Rosemary Wright
+Email: pclarke@example.com
+Membership Tier: Silver
+Loyalty Points Balance: 4448 points
+Total Lifetime Spend: £201.97
+Total Orders: 2
+Sport Interests: yoga, pilates, running, wellness
+Preferred Brands: Nike, Gymshark, Adidas
+Shoe Size (UK): 8
+Clothing Size: M
+
+About This Customer:
+Rosemary combines running with yoga and pilates and is close to reaching Gold tier.
+
+Recent Purchases:
+  - Fitbit Charge 6
+  - Adidas Own the Run Long Sleeve (Women's)
+  - Nike Dri-FIT Headband and Wristband Set
+
+Recent Support Interactions:
+  [2025-12-15] SUPPORT_QUERY: Asked how many more points needed to reach Gold tier.
+  [2025-10-02] RETURN: Returned Gymshark Vital Seamless Leggings (size M) — sizing too large.

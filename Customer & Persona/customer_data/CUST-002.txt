@@ -1,0 +1,24 @@
+CUSTOMER PROFILE — Arthur Gough (CUST-002)
+------------------------------------------------------------
+Name: Arthur Gough
+Email: adamsgregory@example.org
+Membership Tier: Silver
+Loyalty Points Balance: 103 points
+Total Lifetime Spend: £182.97
+Total Orders: 2
+Sport Interests: football, gym, 5-a-side
+Preferred Brands: Adidas, Nike, Under Armour
+Shoe Size (UK): 6
+Clothing Size: L
+
+About This Customer:
+Arthur plays 5-a-side twice a week and goes to the gym for strength training.
+
+Recent Purchases:
+  - Adidas Stadium II Gym Bag 34L
+  - Nike Metcon 9 Training Shoe
+  - Adidas Squadra 21 Shorts (Men's)
+
+Recent Support Interactions:
+  [2025-12-01] SUPPORT_QUERY: Asked whether Adidas Predator boots are suitable for 3G artificial turf.
+  [2025-10-15] ORDER_QUERY: Queried delayed delivery — parcel held at depot after missed delivery attempt.

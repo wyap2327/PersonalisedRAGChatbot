@@ -2,13 +2,14 @@
 contextual_rag.py
 
 Contextual (Personalised) RAG pipeline.
-Retrieves the customer's profile from ChromaDB using their customer_id,
-enriches the query with their membership tier, order history, and preferences,
-then retrieves relevant knowledge base chunks using the enriched query.
+Retrieves query-relevant persona chunks from the customer_personas ChromaDB
+collection (filtered by customer_id), enriches the retrieval query with
+structured profile fields from customers.json, then retrieves and reranks
+knowledge base chunks via the shared pipeline.
 
-This is the key hypothesis of the dissertation — that personalising retrieval
-using customer profile data produces more relevant and satisfying responses
-compared to non-personalised RAG strategies.
+The key dissertation hypothesis: personalising both retrieval and LLM context
+with customer-specific data produces more relevant responses than non-personalised
+RAG strategies.
 """
 
 import os
@@ -24,6 +25,7 @@ CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 CUSTOMERS_JSON = os.path.join(BASE_DIR, "Customer & Persona", "customer_data", "customers.json")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 10
+PERSONA_TOP_K = 3
 
 
 def load_customer(customer_id: str) -> dict | None:
@@ -38,9 +40,8 @@ def load_customer(customer_id: str) -> dict | None:
 
 def build_enriched_query(query: str, customer: dict) -> str:
     """
-    Enrich the original query with customer profile context.
-    The enriched query is used for ChromaDB retrieval only —
-    the customer's name and tier are also injected into the LLM prompt.
+    Enrich the original query with structured customer profile fields.
+    Used for knowledge base ChromaDB retrieval only.
     """
     prefs = customer["preferences"]
     account = customer["account"]
@@ -61,86 +62,77 @@ def build_enriched_query(query: str, customer: dict) -> str:
     return enriched
 
 
-def build_customer_context(customer: dict) -> str:
-    """Build a plain-text customer summary to inject into the LLM prompt."""
-    p = customer["personal_details"]
-    a = customer["account"]
-    prefs = customer["preferences"]
-    recent_orders = customer["order_history"][:2]
-    recent_products = [
-        item["product_name"]
-        for order in recent_orders
-        for item in order["items"]
-    ]
-
-    lines = [
-        f"Customer: {p['full_name']}",
-        f"Membership tier: {a['membership_tier']}",
-        f"Loyalty points: {a['loyalty_points_balance']} points",
-        f"Sport interests: {', '.join(prefs['sport_interests'])}",
-        f"Preferred brands: {', '.join(prefs['preferred_brands'])}",
-        f"Shoe size (UK): {prefs['shoe_size_uk']}",
-        f"Clothing size: {prefs['clothing_size']}",
-        f"Recent purchases: {', '.join(recent_products[:3]) if recent_products else 'None'}",
-    ]
-
-    if customer["past_interactions"]:
-        last = customer["past_interactions"][-1]
-        lines.append(f"Last contact ({last['date']}): {last['detail']}")
-
-    return "\n".join(lines)
-
-
-def load_vectorstore():
+def load_vectorstore(collection_name: str):
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True},
     )
     return Chroma(
-        collection_name="knowledge_base",
-        persist_directory=os.path.join(CHROMA_DIR, "knowledge_base"),
+        collection_name=collection_name,
+        persist_directory=os.path.join(CHROMA_DIR, collection_name),
         embedding_function=embeddings,
     )
 
 
-def run(query: str, customer_id: str, vectorstore=None) -> dict:
+def retrieve_persona_context(query: str, customer_id: str, persona_vectorstore) -> tuple[str, list[str]]:
+    """
+    Query the customer_personas ChromaDB collection for chunks most relevant
+    to the current query, filtered to this customer only.
+    Returns (formatted context string, list of raw chunks).
+    """
+    results = persona_vectorstore.similarity_search(
+        query,
+        k=PERSONA_TOP_K,
+        filter={"customer_id": customer_id},
+    )
+    chunks = [doc.page_content for doc in results]
+    context = "\n".join(chunks)
+    return context, chunks
+
+
+def run(query: str, customer_id: str, vectorstore=None, persona_vectorstore=None) -> dict:
     """
     Run the Contextual RAG pipeline.
 
     Args:
-        query       : the customer's question
-        customer_id : e.g. 'CUST-001' — used to load their profile
-        vectorstore : optional preloaded ChromaDB instance
+        query               : the customer's question
+        customer_id         : e.g. 'CUST-001'
+        vectorstore         : optional preloaded knowledge_base ChromaDB instance
+        persona_vectorstore : optional preloaded customer_personas ChromaDB instance
 
     Returns:
-        dict with keys: response, context, customer_profile, retrieved_chunks, latency_seconds
+        dict with keys: response, context, persona_chunks, retrieved_chunks, latency_seconds
     """
     start = time.perf_counter()
 
     if vectorstore is None:
-        vectorstore = load_vectorstore()
+        vectorstore = load_vectorstore("knowledge_base")
+    if persona_vectorstore is None:
+        persona_vectorstore = load_vectorstore("customer_personas")
 
-    # Step 1 — Load customer profile
+    # Step 1 — Load structured customer profile (for query enrichment and customer name)
     customer = load_customer(customer_id)
     if not customer:
         return {"error": f"Customer {customer_id} not found."}
 
-    # Step 2 — Enrich query with customer profile for retrieval
+    # Step 2 — Retrieve query-relevant persona chunks from ChromaDB (filtered to this customer)
+    persona_context, persona_chunks = retrieve_persona_context(query, customer_id, persona_vectorstore)
+
+    # Step 3 — Enrich query with structured profile fields for knowledge base retrieval
     enriched_query = build_enriched_query(query, customer)
 
-    # Step 3 — Retrieve top-k chunks using the enriched query
+    # Step 4 — Retrieve top-k knowledge base chunks using the enriched query
     results = vectorstore.similarity_search(enriched_query, k=TOP_K)
     retrieved_chunks = [doc.page_content for doc in results]
 
-    # Step 4 — Shared pipeline (rerank → repack → compress)
+    # Step 5 — Shared pipeline (rerank → repack → compress)
     context = shared_pipeline(query, retrieved_chunks)
 
-    # Step 5 — Build customer context string for LLM prompt
-    customer_context = build_customer_context(customer)
-    full_context = f"--- Customer Profile ---\n{customer_context}\n\n--- Knowledge Base ---\n{context}"
+    # Step 6 — Combine dynamic persona context and knowledge base context for LLM prompt
+    full_context = f"--- Customer Profile ---\n{persona_context}\n\n--- Knowledge Base ---\n{context}"
 
-    # Step 6 — Generate personalised response
+    # Step 7 — Generate personalised response
     customer_name = customer["personal_details"]["first_name"]
     response = generate_response(
         query=query,
@@ -158,6 +150,7 @@ def run(query: str, customer_id: str, vectorstore=None) -> dict:
         "enriched_query": enriched_query,
         "response": response,
         "context": full_context,
+        "persona_chunks": persona_chunks,
         "retrieved_chunks": retrieved_chunks,
         "latency_seconds": latency,
     }

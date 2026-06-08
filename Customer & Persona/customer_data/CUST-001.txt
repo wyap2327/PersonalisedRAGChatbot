@@ -1,0 +1,26 @@
+CUSTOMER PROFILE — Ruth Griffiths (CUST-001)
+------------------------------------------------------------
+Name: Ruth Griffiths
+Email: donaldlowe@example.org
+Membership Tier: Gold
+Loyalty Points Balance: 817 points
+Total Lifetime Spend: £649.94
+Total Orders: 2
+Sport Interests: running, road racing, outdoor fitness
+Preferred Brands: Nike, Adidas, ASICS
+Shoe Size (UK): 7
+Clothing Size: S
+
+About This Customer:
+Ruth runs 5 days a week and prioritises performance kit over price.
+
+Recent Purchases:
+  - The North Face Windwall Running Jacket
+  - Adidas Ultraboost 22
+  - Nike Dri-FIT Running T-Shirt (Men's)
+  - Adidas Ultraboost 22
+  - The North Face Windwall Running Jacket
+
+Recent Support Interactions:
+  [2025-11-10] RETURN: Returned Adidas Ultraboost 22 (size 6) — too narrow.
+  [2025-09-03] SUPPORT_QUERY: Asked about loyalty points expiry.
