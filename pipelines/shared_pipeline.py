@@ -1,16 +1,10 @@
 """
-Shared pipeline used by all 5 RAG systems including:
-  1. Rerank    — scores each chunk against the query using a CrossEncoder and keeps only the most relevant ones
-  2. Repack    — places the most relevant chunk last 
-  3. Extractive compression
-
 Requirements: pip install sentence-transformers
 """
 
 import re
 from sentence_transformers import CrossEncoder
 
-# CrossEncoder reranker — lightweight and fast, no GPU needed
 RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 _reranker = None
 

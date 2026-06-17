@@ -1,107 +1,63 @@
 DELIVERY AND SHIPPING POLICY — SHOPNEST E-COMMERCE STORE
-Last Updated: January 2026
 
-=============================================================
-SECTION 1: UK DELIVERY OPTIONS
-=============================================================
+Q: Why is my order late?
+A: We make every effort to get your order to you on time, but please keep in mind that it may take longer in some cases, such as:
+    - During busy periods - when a sudden high volume of products needs to be shipped.
+    - Essential maintenance - on rare occasions, we may need to make important system changes which affects how we manage orders. There may be delays around this time.
+    - Bad weather - when it may be more difficult for products to be shipped around the country.
+    - Public holidays - some of our product partners and delivery partners may have a reduced service around public holidays.
 
-ShopNest offers the following delivery options for all UK orders:
+Q: Where is my order?
+A: You'll see your estimated delivery date on the emails we send to you. This date is calculated based on what time you placed your order; and what delivery service you selected (eg. Next Day).
+    - Please note, this is an estimated delivery date only. We make every effort to get your order to you in time for this date, but please keep in mind that it may take longer especially during busy periods.
 
-1. Standard Delivery
-   - Cost: £3.99 per order
-   - FREE on all orders over £50
-   - Estimated delivery: 3–5 business days from dispatch
-   - Available: Monday to Saturday (excluding bank holidays)
-   - Courier: Royal Mail Tracked 48 or Evri (formerly Hermes), depending on parcel size
+Q: Tracking delivery
+A: You'll be able to track the journey of your parcel using your parcel tracking link. If you're looking for this link, you'll find this:
+    - In your emails we send to you confirming your order is shipped.
+    - Most of the delivery carriers we work with will keep you updated via email as your order progresses. If for whatever reason you're not home; they will let you know they tried to deliver and what to do next.
 
-2. Express Delivery
-   - Cost: £6.99 per order
-   - Estimated delivery: 1–2 business days from dispatch
-   - Available: Monday to Friday
-   - Orders placed before 2pm (GMT) on a business day are dispatched the same day
-   - Orders placed after 2pm or on weekends are dispatched the next business day
-   - Courier: DPD or DHL Express
+Q: Can I track my delivery overseas?
+A: We make it easy for you to track your delivery no matter where it is. Once your order has been processed by us, you should receive an email informing you of your tracking reference. Please use that tracking reference to keep tabs on the progress of your delivery.
 
-3. Next Day Delivery
-   - Cost: £9.99 per order
-   - Guaranteed next business day delivery when ordered before 11pm (GMT)
-   - Available Monday to Thursday (orders placed Friday will arrive Monday)
-   - Signature required on delivery
-   - Courier: DPD Next Day
+Q: Order confirmation
+A: Once you've placed your order we will send you an order confirmation email, detailing what you bought, cost and delivery option.
 
-4. Click and Collect
-   - Cost: FREE
-   - Available at over 3,000 collection points across the UK (including selected Co-op, Collect+, and Doddle locations)
-   - Orders are ready for collection within 2–4 business days
-   - Items must be collected within 10 days or they will be returned and a refund issued
+Q: My parcel shows as delivered but I have not received it
+A: Sorry to hear that you've not received your parcel. It may be that the delivery driver has delivered the parcel to a safe place or neighbour.
+Please check around the outside of your property, the parcel may have been left in a safe place. It's also worth checking the delivery information within the tracking, as any delivery images captured by the driver may help you identify where the parcel has been left.
+We would also ask that you check with your neighbours as the driver may have left the parcel with them.
+If you still need some help after checking the above, please contact our Customer Service team as we'll be happy to help you.
 
-=============================================================
-SECTION 2: FREE DELIVERY THRESHOLD
-=============================================================
+Q: What will happen if I am not in when the parcel is delivered?
+A: For most deliveries the carrier will give you advanced notice by sending you email or text messages, keeping you updated as your parcel makes its way to you. This also includes sending you an estimated delivery timeslot in many cases so you can arrange for someone to be home.
+When delivering any of our standard items, if you're not in the courier will usually attempt to leave the parcel with a neighbour or in a secure location and they'll let you know (by email or leaving a card through your post box).
+If there is nowhere safe to leave your parcel, they'll let you know they've attempted delivery & will try again, usually on the next day.
 
-Standard delivery is FREE for all UK orders with a basket value of £50 or more (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required. Free delivery does not apply to express or next day delivery options.
+Q: what are the UK delivery options
+A: ShopNest offers the following delivery options for all UK orders:
+Delivery Options	Order Before	Delivery Times	Cost
+Standard Delivery	23:59	3 to 7 Days	£4.99
+Express Delivery	21:00	48 Hours	£7.99
+Next Day Delivery	21:00	Next Day	£9.99
+Next Day Delivery by DPD	21:00	Next Day	£11.99
+Local Collection/ Locker	23:59	3 to 7 Days	£4.99
+Oversized Delivery (Light & Large by EVRI)	23:59	3 to 7 Days	£9.99
+Special Delivery	23:59	5 to 7 Days	£19.99
+Oversized Delivery	23:59	3 to 14 Working Days	£19.99
+2 Man Delivery	23:59	3 to 14 Working Days	£49.99
+Premium Oversized Delivery	23:59	3 to 5 Days	£49.99
 
-=============================================================
-SECTION 3: DISPATCH TIMES
-=============================================================
+Q: Are there free delivery?
+A: Standard delivery is FREE for all UK orders with a basket value of £50 or more (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required. Free delivery does not apply to express or next day delivery options.
 
-- Orders placed Monday to Friday before 2pm (GMT) are dispatched the same business day.
-- Orders placed after 2pm or on weekends/bank holidays are dispatched the next business day.
-- During peak periods (e.g., Black Friday, Christmas), dispatch times may be extended by 1–2 additional business days. Any delays will be communicated via email.
-- Pre-order items will be dispatched on the stated release date.
-
-=============================================================
-SECTION 4: INTERNATIONAL DELIVERY
-=============================================================
-
-ShopNest currently ships to the following regions:
-
-European Union (EU)
-   - Cost: £12.99 per order
-   - Estimated delivery: 5–10 business days from dispatch
-   - Note: Customers are responsible for any import duties, VAT, or customs fees applicable in their country. These are not included in our delivery charge.
-   - Courier: DHL International or Royal Mail International Tracked
-
-United States and Canada
-   - Cost: £19.99 per order
-   - Estimated delivery: 7–14 business days from dispatch
-   - Import duties and taxes are the responsibility of the recipient
-   - Courier: FedEx International
-
-Australia and New Zealand
-   - Cost: £22.99 per order
-   - Estimated delivery: 10–18 business days from dispatch
-   - Import duties and taxes are the responsibility of the recipient
-
-Rest of World
-   - International shipping is not available to all countries. Please check the checkout for availability for your country.
-   - Estimated delivery: 14–21 business days
-   - Cost: £24.99
-
-Important Note on International Orders:
-ShopNest is not responsible for delays caused by customs processing. We are unable to falsify customs declarations or mark goods as gifts to avoid import fees — this is illegal and we do not comply with such requests.
-
-=============================================================
-SECTION 5: TRACKING YOUR ORDER
-=============================================================
-
-- A shipping confirmation email containing your tracking number is sent once your order is dispatched.
-- Tracking is available via the courier's website or via "My Orders" in your ShopNest account.
-- Live tracking updates are provided by DPD and DHL. Royal Mail and Evri provide milestone tracking (e.g., dispatched, out for delivery, delivered).
-- If your tracking has not updated within 5 business days of dispatch, please contact our support team.
-
-=============================================================
-SECTION 6: FAILED DELIVERIES
-=============================================================
-
+Q: Failed delivery
+A:
 - If no one is available at the delivery address, the courier will leave a delivery attempt card and typically retry delivery the next business day.
 - After 2 failed delivery attempts, parcels are held at a local depot or collection point for 7 days before being returned to ShopNest.
 - If a parcel is returned due to failed delivery, we will contact you to arrange re-delivery (an additional delivery charge of £3.99 applies) or issue a refund minus the original delivery cost.
 
-=============================================================
-SECTION 7: LOST OR DAMAGED PARCELS
-=============================================================
-
+Q: LOST OR DAMAGED PARCELS
+A:
 Lost Parcels:
 - A parcel is considered lost if it has not been delivered within 10 business days of the expected delivery date (UK) or 28 business days (international).
 - Contact our support team who will raise a formal investigation with the courier. Investigations typically take 5–10 business days.
@@ -111,11 +67,3 @@ Damaged Parcels:
 - If your order arrives damaged, take photographs of both the packaging and the item before opening fully.
 - Contact us within 48 hours of delivery with photos and your order number.
 - We will arrange a free return and offer a replacement or full refund.
-
-=============================================================
-SECTION 8: DELIVERY RESTRICTIONS
-=============================================================
-
-- We do not deliver to PO Boxes for express or next day delivery. Standard delivery to PO Boxes is available via Royal Mail.
-- Some large or heavy items (e.g., items over 30kg) may incur an additional delivery surcharge, which will be shown at checkout.
-- Certain products (e.g., aerosols, batteries over a certain capacity) are restricted from air freight and cannot be shipped internationally.

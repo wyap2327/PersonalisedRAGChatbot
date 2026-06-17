@@ -1,7 +1,7 @@
 FREQUENTLY ASKED QUESTIONS — SHOPNEST E-COMMERCE STORE
 
 =============================================================
-SECTION 1: ORDERS
+SECTION 1: Order & Payments
 =============================================================
 
 Q: How do I place an order?
@@ -25,10 +25,6 @@ A: We apologise for this error. Please contact our customer support team within 
 Q: Part of my order is missing. What should I do?
 A: Occasionally large orders are split across multiple shipments. Check your dispatch email to see if your items are arriving separately. If items are missing from a single shipment, contact us within 14 days of delivery with your order number and we will resolve this promptly.
 
-=============================================================
-SECTION 2: PAYMENTS
-=============================================================
-
 Q: What payment methods do you accept?
 A: We accept the following payment methods: Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and ShopNest Gift Cards. We do not currently accept cryptocurrency or bank transfers for online orders.
 
@@ -44,44 +40,65 @@ A: Yes, we offer Klarna as a Buy Now Pay Later option. You can choose to pay in 
 Q: Will I be charged in my local currency?
 A: All prices on our website are displayed in British Pounds (GBP). If your payment card is in a different currency, your bank will convert the amount at their applicable exchange rate. We do not charge additional currency conversion fees.
 
-=============================================================
-SECTION 3: ACCOUNT AND SECURITY
-=============================================================
-
-Q: How do I create an account?
-A: Click "Sign Up" in the top right corner of the website, enter your name, email address, and a password of at least 8 characters (must include one uppercase letter, one number, and one special character). You will receive a verification email — click the link to activate your account.
-
-Q: I have forgotten my password. How do I reset it?
-A: Click "Sign In", then "Forgot Password". Enter your registered email address and we will send you a password reset link. The link expires after 30 minutes. If you do not receive the email within 5 minutes, check your spam folder.
-
-Q: How do I update my delivery address or personal details?
-A: Log in to your account, click on your name in the top right corner, and select "Account Settings". From here you can update your name, email address, phone number, and saved delivery addresses.
-
-Q: How do I delete my account?
-A: To request account deletion, contact our customer support team at support@shopnest.co.uk. Under GDPR, we will delete your personal data within 30 days. Note that deletion is permanent — your order history, loyalty points, and saved preferences cannot be recovered.
 
 =============================================================
-SECTION 4: PROMOTIONS AND GIFT CARDS
+SECTION 2: Product & Stock
+=============================================================
+Q: How Do I Find the Right Size and Fit?
+A: When it comes to performance, fit matters. We'll help you find the right shoes and gear in the right size so you can perform at your best.
+Not sure what size you wear? Our size charts can help you determine the best fit for our shoes, clothing and gear. On our size charts page, you can access drop-down menus to navigate to specific size charts for men, women, unisex, kids and accessories. Most size charts also include fit tips and information on how to measure.
+
+Q: Does ShopNest offer a student discount?
+A: Yes, we offer a 10% discount off select full-price items to students currently enrolled at an eligible school, college, or university in the United Kingdom. To get the discount, verify your student status using our online verification form — you may be asked to provide documentation. After successful verification, you will receive a single-use promo code for 10% off. Sign in to your ShopNest account and apply the code at checkout.
+
+Q: When will my size be available again?
+A: We don't have a set schedule to restock items — we refill our inventory as soon as stock becomes available, so check back frequently for updates.
+
+=============================================================
+SECTION 3: Loyalty & Rewards
+=============================================================
+
+Q: How do I earn loyalty points?
+A: You earn 1 point for every £1 spent on eligible purchases (rounded down to the nearest pound). Points are calculated on your order total after discounts, before delivery charges. Silver members earn 1.25 points per £1 and Gold members earn 1.5 points per £1. You can also earn bonus points through our Welcome Bonus (100 points on your first purchase), Birthday Bonus (2x points during your birthday month), Referral Bonus (200 points per friend you refer), and Product Reviews (25 points per verified review, up to 5 per month).
+
+Q: How do I redeem my loyalty points?
+A: At checkout, you will see your available points balance on the payment page. Enter the number of points you wish to redeem (in multiples of 100) or click "Use Maximum". Every 100 points equals £1 off your order. The minimum redemption is 500 points (£5 off) and the maximum per order is 5,000 points (£50 off). Points can only be used against the product cost, not delivery charges.
+
+Q: What are the ShopNest Rewards membership tiers?
+A: There are three tiers based on points earned in the last 12 months:
+    - Bronze (default): 0-499 points. Standard earning rate, free standard delivery on orders over £50.
+    - Silver: 500-1,999 points. 1.25x earning rate, early sale access (24 hours early), free standard delivery on orders over £40, priority customer support.
+    - Gold: 2,000+ points. 1.5x earning rate, earliest sale access (48 hours early), free standard delivery on all orders, free express delivery on orders over £75, exclusive monthly discounts, and an annual £25 ShopNest voucher.
+Tier status is reviewed on the 1st of each month. You will be notified by email if your tier changes.
+
+Q: When will my points appear in my account?
+A: Points from a completed order are typically credited to your account within 24 hours of dispatch confirmation. Points are withheld until the 30-day returns window closes if your order is partially returned. You can check your balance and points history by logging in and going to "My Rewards".
+
+Q: Do loyalty points expire?
+A: Yes. Points expire if your account has no earning or redeeming activity for 18 consecutive months. Gold members receive an extended 24-month grace period. We will send you a reminder email 60 days and 30 days before expiry. Expired points cannot be reinstated.
+
+=============================================================
+SECTION 4: Promotions & Gift Cards
 =============================================================
 
 Q: How do I apply a discount code?
 A: At checkout, enter your discount code in the "Promo Code" field and click "Apply". Only one discount code can be used per order. Discount codes cannot be combined with other promotions unless explicitly stated.
 
 Q: My discount code is not working. Why?
-A: Common reasons include: the code has expired, the minimum spend requirement has not been met, the items in your basket are excluded from the promotion, or the code has already been used (some codes are single-use). Check the terms of the promotion and contact support if the issue persists.
+A: Common reasons include: the code has expired, the minimum spend requirement has not been met, the items in your basket are excluded from the promotion, or the code has already been used (some codes are single-use). Check the terms of the promotion and contact our support team if the issue persists.
 
 Q: How do Gift Cards work?
 A: ShopNest Gift Cards are available in denominations of £10, £25, £50, and £100. They can be purchased online and sent digitally by email. To redeem, enter the gift card code at checkout. Gift cards do not expire and cannot be exchanged for cash.
 
 =============================================================
-SECTION 5: CONTACT US
+SECTION 5: Contact Us
 =============================================================
 
 Q: How do I contact customer support?
 A: You can reach us via:
-- Live chat: Available Monday to Friday, 8am–8pm, and Saturday 9am–5pm (GMT)
+- Live chat: Available Monday to Friday, 8am-8pm, and Saturday 9am-5pm (GMT)
 - Email: support@shopnest.co.uk (response within 24 hours on business days)
-- Phone: 0800 123 4567 (Monday to Friday, 9am–6pm GMT, calls are free from UK landlines and mobiles)
+- Phone: 0800 123 4567 (Monday to Friday, 9am-6pm GMT, calls are free from UK landlines and mobiles)
 
 Q: What are your customer support hours?
-A: Live chat and phone support are available Monday to Friday 8am–8pm and Saturday 9am–5pm (GMT). Email support operates 7 days a week with responses within 24 hours on business days and within 48 hours on weekends and bank holidays.
+A: Live chat and phone support are available Monday to Friday 8am-8pm and Saturday 9am-5pm (GMT). Email support operates 7 days a week with responses within 24 hours on business days and within 48 hours on weekends and bank holidays.
