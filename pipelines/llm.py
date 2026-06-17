@@ -13,16 +13,11 @@ Be concise, friendly, and professional. Do not make up information."""
 
 
 def generate_response(query: str, context: str, customer_name: str = None) -> str:
-    
     greeting = f"You are speaking with {customer_name}. " if customer_name else ""
-
     user_message = f"""{greeting}
-
 Context:
 {context}
-
 Customer question: {query}"""
-
     response = ollama.chat(
         model=MODEL,
         messages=[
@@ -30,5 +25,4 @@ Customer question: {query}"""
             {"role": "user",   "content": user_message},
         ],
     )
-
     return response["message"]["content"]

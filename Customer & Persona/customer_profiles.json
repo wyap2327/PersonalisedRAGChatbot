@@ -339,5 +339,95 @@
         "detail": "Asked about the Christmas extended return period."
       }
     ]
+  },
+  {
+    "customer_id": "CUST-011",
+    "membership_tier": "Gold",
+    "sport_interests": ["running", "cycling", "triathlon training"],
+    "preferred_brands": ["ASICS", "Nike", "Adidas"],
+    "order_skus": ["ASIC-GN25-003", "NIKE-PE-WT-013", "FITB-CHG6-BLK-018", "ADID-OTR-WLT-011", "ASIC-GN25-003", "NIKE-HWSET-021"],
+    "persona_summary": "Mei trains for triathlons and logs high weekly mileage across running and cycling, prioritising performance footwear and tracking gear.",
+    "past_interactions": [
+      {
+        "date": "2026-03-02",
+        "type": "support_query",
+        "detail": "Asked about the ASICS Gel-Nimbus 25 manufacturer warranty after noticing a midsole separation."
+      },
+      {
+        "date": "2025-12-05",
+        "type": "order_query",
+        "detail": "Queried whether a £181.98 order qualified for free standard delivery."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-012",
+    "membership_tier": "Bronze",
+    "sport_interests": ["basketball", "casual gym", "lifestyle fashion"],
+    "preferred_brands": ["Nike", "Converse", "Vans"],
+    "order_skus": ["NIKE-AM270-001", "VANS-OS-006", "CONV-CT-HI-005"],
+    "persona_summary": "Tom plays recreational basketball and buys primarily lifestyle and streetwear trainers, shopping infrequently.",
+    "past_interactions": [
+      {
+        "date": "2026-04-10",
+        "type": "support_query",
+        "detail": "Asked whether Nike Air Max 270 runs true to size."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-013",
+    "membership_tier": "Silver",
+    "sport_interests": ["running", "hiking", "outdoor fitness"],
+    "preferred_brands": ["The North Face", "ASICS", "Nike"],
+    "order_skus": ["ASIC-GN25-003", "ADID-OTR-WLT-011", "TNF-WW-MJ-016", "NIKE-PE-WT-013", "NIKE-HWSET-021"],
+    "persona_summary": "Fatima runs outdoors year-round and hikes at weekends, regularly buying performance outerwear and running footwear.",
+    "past_interactions": [
+      {
+        "date": "2026-01-25",
+        "type": "support_query",
+        "detail": "Asked about the return policy for a jacket worn on one outdoor run."
+      },
+      {
+        "date": "2025-10-10",
+        "type": "order_query",
+        "detail": "Queried whether order SN713303 had been dispatched after 2 days with no update."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-014",
+    "membership_tier": "Gold",
+    "sport_interests": ["cycling", "gym", "HIIT", "CrossFit"],
+    "preferred_brands": ["Nike", "Under Armour", "Adidas"],
+    "order_skus": ["FITB-CHG6-BLK-018", "NIKE-MET9-009", "UA-HG-COMP-012", "ADID-SQ21-MS-014", "NIKE-TFA-DT-017", "ADID-STAD2-GB-022"],
+    "persona_summary": "Ryan cycles competitively and cross-trains heavily in the gym, consistently spending enough to maintain Gold membership.",
+    "past_interactions": [
+      {
+        "date": "2026-04-02",
+        "type": "support_query",
+        "detail": "Asked when the annual Gold member £25 voucher would be applied to the account."
+      },
+      {
+        "date": "2026-01-15",
+        "type": "order_query",
+        "detail": "Asked whether Gold members receive free express delivery on orders over £75."
+      }
+    ]
+  },
+  {
+    "customer_id": "CUST-015",
+    "membership_tier": "Bronze",
+    "sport_interests": ["pilates", "yoga", "light walking"],
+    "preferred_brands": ["Gymshark", "Nike"],
+    "order_skus": ["GS-VS2-WL-015", "YNOW-YM-6MM-020", "NIKE-HWSET-021"],
+    "persona_summary": "Helen recently started attending pilates classes and shops for comfortable activewear on a budget.",
+    "past_interactions": [
+      {
+        "date": "2026-03-28",
+        "type": "support_query",
+        "detail": "Asked whether the Gymshark leggings could be returned after being worn once to a pilates class."
+      }
+    ]
   }
 ]

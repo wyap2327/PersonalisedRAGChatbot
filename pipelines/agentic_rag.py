@@ -21,7 +21,8 @@ from langchain_ollama import ChatOllama
 from langchain.tools import tool
 from langchain_core.messages import ToolMessage
 from langgraph.prebuilt import create_react_agent
-from pipelines.llm import MODEL
+from pipelines.llm import MODEL, generate_response
+from pipelines.shared_pipeline import shared_pipeline
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
@@ -106,17 +107,32 @@ def run(query: str, vectorstore=None) -> dict:
         config={"recursion_limit": 10},
     )
 
-    agent_response = result["messages"][-1].content
-
     tool_outputs = [m.content for m in result["messages"] if isinstance(m, ToolMessage)]
-    context = "\n\n".join(tool_outputs) if tool_outputs else "No tool calls made."
+
+    if tool_outputs:
+        # Flatten tool outputs into individual chunks.
+        # SearchKnowledgeBase joins chunks with "\n\n---\n\n"; GetFullDocument returns plain text.
+        all_chunks = []
+        for output in tool_outputs:
+            if "\n\n---\n\n" in output:
+                all_chunks.extend(c.strip() for c in output.split("\n\n---\n\n") if c.strip())
+            elif output.strip() and output.strip() != "No relevant information found.":
+                all_chunks.append(output.strip())
+
+        # Shared pipeline (rerank → repack → compress) — consistent with all other pipelines
+        context = shared_pipeline(query, all_chunks) if all_chunks else "No relevant information found."
+        response = generate_response(query=query, context=context)
+    else:
+        # Agent answered without calling any tools — use its response directly
+        context = "No tool calls made."
+        response = result["messages"][-1].content
 
     latency = round(time.perf_counter() - start, 3)
 
     return {
         "pipeline": "agentic_rag",
         "query": query,
-        "response": agent_response,
+        "response": response,
         "context": context,
         "latency_seconds": latency,
     }

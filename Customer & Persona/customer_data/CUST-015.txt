@@ -1,0 +1,23 @@
+CUSTOMER PROFILE — Helen Morris (CUST-015)
+------------------------------------------------------------
+Name: Helen Morris
+Email: helenmorris@example.co.uk
+Membership Tier: Bronze
+Loyalty Points Balance: 124 points
+Total Lifetime Spend: £96.97
+Total Orders: 2
+Sport Interests: pilates, yoga, light walking
+Preferred Brands: Gymshark, Nike
+Shoe Size (UK): 5
+Clothing Size: S
+
+About This Customer:
+Helen recently started attending pilates classes and shops for comfortable activewear on a budget.
+
+Recent Purchases:
+  - Gymshark Vital Seamless 2.0 Leggings
+  - Yoga Mat — Non-Slip TPE 6mm
+  - Nike Dri-FIT Headband and Wristband Set
+
+Recent Support Interactions:
+  [2026-03-28] SUPPORT_QUERY: Asked whether the Gymshark leggings could be returned after being worn once to a pilates class.

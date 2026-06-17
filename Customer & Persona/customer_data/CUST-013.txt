@@ -1,0 +1,27 @@
+CUSTOMER PROFILE — Fatima Al-Rashid (CUST-013)
+------------------------------------------------------------
+Name: Fatima Al-Rashid
+Email: fatimaalrashid@example.co.uk
+Membership Tier: Silver
+Loyalty Points Balance: 1156 points
+Total Lifetime Spend: £456.94
+Total Orders: 3
+Sport Interests: running, hiking, outdoor fitness
+Preferred Brands: The North Face, ASICS, Nike
+Shoe Size (UK): 6
+Clothing Size: M
+
+About This Customer:
+Fatima runs outdoors year-round and hikes at weekends, regularly buying performance outerwear and running footwear.
+
+Recent Purchases:
+  - ASICS Gel-Nimbus 25
+  - Adidas Own the Run Long Sleeve (Women's)
+  - The North Face Windwall Running Jacket
+  - Nike Phenom Elite Running Tights (Women's)
+  - Nike Dri-FIT Headband and Wristband Set
+  - Adidas Own the Run Long Sleeve (Women's)
+
+Recent Support Interactions:
+  [2026-01-25] SUPPORT_QUERY: Asked about the return policy for a jacket worn on one outdoor run.
+  [2025-10-10] ORDER_QUERY: Queried whether order SN713303 had been dispatched after 2 days with no update.

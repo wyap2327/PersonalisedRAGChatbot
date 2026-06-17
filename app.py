@@ -23,7 +23,7 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 LOG_FILE = os.path.join(LOGS_DIR, "session_log.jsonl")
 
 # MS Forms survey link — replace with your actual link
-SURVEY_LINK = "https://forms.office.com/your-survey-link-here"
+SURVEY_LINK = "https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=8l9CbGVo30Kk245q9jSBPU0_B0gWdLJLiBUgwn0d6IVUQktHTlJQTDZNUENKUlJRRE8zWFpENllSRC4u"
 
 # Participant ID → Customer ID mapping
 # Each participant is assigned a persona for the evaluation session
@@ -38,6 +38,11 @@ PARTICIPANT_MAP = {
     "P008": "CUST-008",
     "P009": "CUST-009",
     "P010": "CUST-010",
+    "P011": "CUST-011",
+    "P012": "CUST-012",
+    "P013": "CUST-013",
+    "P014": "CUST-014",
+    "P015": "CUST-015",
 }
 
 PIPELINE_OPTIONS = [
@@ -49,11 +54,11 @@ PIPELINE_OPTIONS = [
 ]
 
 PIPELINE_DESCRIPTIONS = {
-    "Baseline RAG":     "Standard retrieval — searches the knowledge base directly.",
-    "Multi-Query RAG":  "Generates multiple query variants to improve retrieval coverage.",
-    "Contextual RAG":   "Personalises responses using your customer profile.",
-    "Hybrid RAG":       "Combines semantic search and keyword search for broader retrieval.",
-    "Agentic RAG":      "An AI agent that decides what to search and how to answer.",
+    "Baseline RAG":    "Standard retrieval — searches the knowledge base directly.",
+    "Multi-Query RAG": "Generates multiple query variants to improve retrieval coverage.",
+    "Contextual RAG":  "Personalises responses using your customer profile.",
+    "Hybrid RAG":      "Combines semantic search and keyword search for broader retrieval.",
+    "Agentic RAG":     "An AI agent that decides what to search and how to answer.",
 }
 
 

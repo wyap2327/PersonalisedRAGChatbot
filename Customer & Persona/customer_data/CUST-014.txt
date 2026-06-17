@@ -1,0 +1,27 @@
+CUSTOMER PROFILE — Ryan Clarke (CUST-014)
+------------------------------------------------------------
+Name: Ryan Clarke
+Email: ryanclarke@example.co.uk
+Membership Tier: Gold
+Loyalty Points Balance: 3120 points
+Total Lifetime Spend: £640.90
+Total Orders: 4
+Sport Interests: cycling, gym, HIIT, CrossFit
+Preferred Brands: Nike, Under Armour, Adidas
+Shoe Size (UK): 9
+Clothing Size: L
+
+About This Customer:
+Ryan cycles competitively and cross-trains heavily in the gym, consistently spending enough to maintain Gold membership.
+
+Recent Purchases:
+  - Fitbit Charge 6
+  - Nike Metcon 9 Training Shoe
+  - Under Armour HeatGear Compression Top
+  - Adidas Squadra 21 Shorts (Men's)
+  - Nike Therma-FIT Academy Drill Top
+  - Adidas Stadium II Gym Bag 34L
+
+Recent Support Interactions:
+  [2026-04-02] SUPPORT_QUERY: Asked when the annual Gold member £25 voucher would be applied to the account.
+  [2026-01-15] ORDER_QUERY: Asked whether Gold members receive free express delivery on orders over £75.

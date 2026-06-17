@@ -1,0 +1,27 @@
+CUSTOMER PROFILE — Mei Lin (CUST-011)
+------------------------------------------------------------
+Name: Mei Lin
+Email: meilin@example.co.uk
+Membership Tier: Gold
+Loyalty Points Balance: 2340 points
+Total Lifetime Spend: £606.94
+Total Orders: 3
+Sport Interests: running, cycling, triathlon training
+Preferred Brands: ASICS, Nike, Adidas
+Shoe Size (UK): 5
+Clothing Size: S
+
+About This Customer:
+Mei trains for triathlons and logs high weekly mileage across running and cycling, prioritising performance footwear and tracking gear.
+
+Recent Purchases:
+  - ASICS Gel-Nimbus 25
+  - Nike Phenom Elite Running Tights (Women's)
+  - Fitbit Charge 6
+  - Adidas Own the Run Long Sleeve (Women's)
+  - ASICS Gel-Nimbus 25
+  - Nike Dri-FIT Headband and Wristband Set
+
+Recent Support Interactions:
+  [2026-03-02] SUPPORT_QUERY: Asked about the ASICS Gel-Nimbus 25 manufacturer warranty after noticing a midsole separation.
+  [2025-12-05] ORDER_QUERY: Queried whether a £181.98 order qualified for free standard delivery.

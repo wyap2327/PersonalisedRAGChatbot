@@ -1,0 +1,23 @@
+CUSTOMER PROFILE — Tom Walker (CUST-012)
+------------------------------------------------------------
+Name: Tom Walker
+Email: tomwalker@example.co.uk
+Membership Tier: Bronze
+Loyalty Points Balance: 287 points
+Total Lifetime Spend: £269.97
+Total Orders: 2
+Sport Interests: basketball, casual gym, lifestyle fashion
+Preferred Brands: Nike, Converse, Vans
+Shoe Size (UK): 10
+Clothing Size: M
+
+About This Customer:
+Tom plays recreational basketball and buys primarily lifestyle and streetwear trainers, shopping infrequently.
+
+Recent Purchases:
+  - Nike Air Max 270
+  - Vans Old Skool
+  - Converse Chuck Taylor All Star Hi
+
+Recent Support Interactions:
+  [2026-04-10] SUPPORT_QUERY: Asked whether Nike Air Max 270 runs true to size.

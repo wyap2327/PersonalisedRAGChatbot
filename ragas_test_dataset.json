@@ -1,0 +1,227 @@
+[
+  {
+    "id": "Q01",
+    "question": "What is ShopNest's standard return window?",
+    "ground_truth": "ShopNest allows returns within 30 days of the date of delivery for a full refund or exchange.",
+    "reference_contexts": [
+      "You can return most items within 30 days of the date of delivery for a full refund or exchange. This is in addition to your statutory rights under UK law."
+    ],
+    "category": "returns",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q02",
+    "question": "How long do I have to return a Christmas gift purchase?",
+    "ground_truth": "Items purchased during the Christmas period (1st November to 31st December) have an extended return window of 60 days from the date of delivery.",
+    "reference_contexts": [
+      "For items purchased during the Christmas period (1st November to 31st December), the return window is extended to 60 days from the date of delivery to accommodate gift purchases."
+    ],
+    "category": "returns",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q03",
+    "question": "How do I initiate a return on ShopNest?",
+    "ground_truth": "Log in to your ShopNest account, go to 'My Orders', find the order, click 'Return Item(s)', select the items, choose your reason for returning, and confirm. A prepaid Royal Mail or Evri return label is emailed within 1 hour. Drop the parcel at a Royal Mail Post Office or Evri drop-off point and keep the receipt as proof of postage.",
+    "reference_contexts": [
+      "Step 1 — Request Your Return Online: Log in to your ShopNest account, go to 'My Orders', find the order containing the item you want to return, click 'Return Item(s)', select the item(s), choose your reason for returning, and confirm.",
+      "Step 2 — Receive Your Prepaid Return Label: Once your return request is approved, you will receive a prepaid Royal Mail or Evri return label by email within 1 hour.",
+      "Step 3 — Drop Off Your Parcel: Take your parcel to any Royal Mail Post Office or Evri drop-off point (over 7,000 locations across the UK). Keep your drop-off receipt as proof of postage until your refund is confirmed."
+    ],
+    "category": "returns",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q04",
+    "question": "How long does a refund take after I return an item?",
+    "ground_truth": "Once the returned item is received and confirmed, refunds are processed within 3–5 business days. For credit or debit cards, allow a further 3–5 business days for your bank to process the payment.",
+    "reference_contexts": [
+      "Once we receive your item and confirm it meets the return conditions, we will process your refund within 3–5 business days.",
+      "Credit or Debit Card: Refund issued within 3–5 business days of return confirmation. Allow a further 3–5 business days for your bank to process it."
+    ],
+    "category": "returns",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q05",
+    "question": "Does it cost anything to return an item I no longer want?",
+    "ground_truth": "No. Change of mind returns are free. ShopNest provides a prepaid Royal Mail or Evri return label by email within 1 hour of an approved return request.",
+    "reference_contexts": [
+      "Change of mind returns: Return postage is FREE using our prepaid label.",
+      "Once your return request is approved, you will receive a prepaid Royal Mail or Evri return label by email within 1 hour."
+    ],
+    "category": "returns",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q06",
+    "question": "What UK delivery options does ShopNest offer and how much do they cost?",
+    "ground_truth": "ShopNest offers four UK delivery options: Standard Delivery at £3.99 (free on orders over £50, 3–5 business days); Express Delivery at £6.99 (1–2 business days); Next Day Delivery at £9.99 (guaranteed next business day if ordered before 11pm); and Click and Collect for free (2–4 business days at over 3,000 locations).",
+    "reference_contexts": [
+      "Standard Delivery: Cost: £3.99 per order. FREE on all orders over £50. Estimated delivery: 3–5 business days from dispatch.",
+      "Express Delivery: Cost: £6.99 per order. Estimated delivery: 1–2 business days from dispatch.",
+      "Next Day Delivery: Cost: £9.99 per order. Guaranteed next business day delivery when ordered before 11pm (GMT).",
+      "Click and Collect: Cost: FREE. Available at over 3,000 collection points across the UK. Orders are ready for collection within 2–4 business days."
+    ],
+    "category": "delivery",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q07",
+    "question": "At what basket value does standard delivery become free?",
+    "ground_truth": "Standard delivery is free on all UK orders with a basket value of £50 or more, calculated after any discounts are applied. No code is required — it is applied automatically at checkout.",
+    "reference_contexts": [
+      "Standard delivery is FREE for all UK orders with a basket value of £50 or more (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required."
+    ],
+    "category": "delivery",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q08",
+    "question": "What time must I order by to guarantee next day delivery?",
+    "ground_truth": "Next Day Delivery is guaranteed when ordered before 11pm GMT. Orders placed on Friday will arrive on Monday, as the service is available Monday to Thursday only.",
+    "reference_contexts": [
+      "Next Day Delivery: Guaranteed next business day delivery when ordered before 11pm (GMT). Available Monday to Thursday (orders placed Friday will arrive Monday)."
+    ],
+    "category": "delivery",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q09",
+    "question": "What happens if I miss a delivery attempt?",
+    "ground_truth": "The courier leaves a delivery card and retries the next business day. After 2 failed attempts, the parcel is held at a local depot for 7 days. If not collected, it is returned to ShopNest and you can choose re-delivery for £3.99 or a refund minus the original delivery cost.",
+    "reference_contexts": [
+      "If no one is available at the delivery address, the courier will leave a delivery attempt card and typically retry delivery the next business day.",
+      "After 2 failed delivery attempts, parcels are held at a local depot or collection point for 7 days before being returned to ShopNest.",
+      "If a parcel is returned due to failed delivery, we will contact you to arrange re-delivery (an additional delivery charge of £3.99 applies) or issue a refund minus the original delivery cost."
+    ],
+    "category": "delivery",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q10",
+    "question": "How much does it cost to deliver to EU countries and how long does it take?",
+    "ground_truth": "EU delivery costs £12.99 per order and takes 5–10 business days from dispatch. Customers are responsible for any import duties, VAT, or customs fees applicable in their country.",
+    "reference_contexts": [
+      "European Union (EU): Cost: £12.99 per order. Estimated delivery: 5–10 business days from dispatch. Note: Customers are responsible for any import duties, VAT, or customs fees applicable in their country."
+    ],
+    "category": "delivery",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q11",
+    "question": "How many loyalty points do I earn per pound spent, and does my membership tier affect this?",
+    "ground_truth": "Yes, the earning rate varies by tier. Bronze members earn 1 point per £1 spent. Silver members earn 1.25 points per £1. Gold members earn 1.5 points per £1. Points are calculated on the final order total after discounts and before delivery charges.",
+    "reference_contexts": [
+      "Base Earning Rate: Customers earn 1 point for every £1 spent on eligible purchases (rounded down to the nearest pound). Points are calculated on the final order total after discounts and before delivery charges.",
+      "Bronze: Standard earning rate (1 point per £1 spent).",
+      "Silver: 1.25x earning rate (1.25 points per £1 spent).",
+      "Gold: 1.5x earning rate (1.5 points per £1 spent)."
+    ],
+    "category": "loyalty",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q12",
+    "question": "What is the minimum number of loyalty points I need before I can redeem them?",
+    "ground_truth": "The minimum redemption is 500 points, equivalent to £5 off an order. Points must be redeemed in multiples of 100, and the maximum per order is 5,000 points (£50 off).",
+    "reference_contexts": [
+      "Point Value: 100 points = £1 discount on a future order. Minimum redemption: 500 points (equivalent to £5 off). Maximum redemption per order: 5,000 points (equivalent to £50 off)."
+    ],
+    "category": "loyalty",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q13",
+    "question": "How do I use my loyalty points at checkout?",
+    "ground_truth": "At checkout on the payment page you will see your available points balance. Enter the number of points to redeem in multiples of 100 or click 'Use Maximum'. The discount is applied to your order total. Points can only be redeemed against the product cost, not delivery charges.",
+    "reference_contexts": [
+      "On the payment page, you will see your available points balance. Enter the number of points you wish to redeem (in multiples of 100) or click 'Use Maximum'. The equivalent discount will be applied to your order total.",
+      "Points can only be redeemed against the product cost, not delivery charges."
+    ],
+    "category": "loyalty",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q14",
+    "question": "When do ShopNest loyalty points expire?",
+    "ground_truth": "Points expire after 18 consecutive months of no earning or redeeming activity. Gold members receive a 24-month grace period. Reminder emails are sent 60 days and 30 days before expiry. Expired points cannot be reinstated.",
+    "reference_contexts": [
+      "Points expire if your account has no earning or redeeming activity for 18 consecutive months.",
+      "A reminder email is sent 60 days and 30 days before expiry.",
+      "Expired points cannot be reinstated.",
+      "Bronze and Silver members' points may also expire if the account is inactive; Gold members receive an additional 6-month grace period (24 months total before expiry)."
+    ],
+    "category": "loyalty",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q15",
+    "question": "How many points do I need to reach Gold membership tier?",
+    "ground_truth": "Gold tier requires 2,000 or more points earned in the preceding 12 calendar months. Tier status is reviewed on the 1st of each month.",
+    "reference_contexts": [
+      "Gold: Requirement: 2,000+ points earned in the last 12 months.",
+      "Tier Review: Tier status is reviewed on the 1st of each month based on the last 12 months of point-earning activity."
+    ],
+    "category": "loyalty",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q16",
+    "question": "Is the Nike Metcon 9 suitable for both weightlifting and HIIT workouts?",
+    "ground_truth": "Yes. The Nike Metcon 9 is Nike's flagship cross-training shoe, specifically designed for weightlifting, HIIT, and gym workouts. It has a flat, firm heel (4mm drop) for stability during heavy lifts and squats, and forefoot flexibility for cardio movements such as box jumps. It costs £124.99.",
+    "reference_contexts": [
+      "The Nike Metcon 9 is Nike's flagship cross-training shoe, designed for weightlifting, HIIT, and gym workouts.",
+      "A flat, wide heel platform provides exceptional stability for heavy lifts, while the forefoot flexibility allows for natural movement during cardio and box jumps.",
+      "Flat, firm heel (4mm drop) for stability during Olympic lifts and squats.",
+      "Price: £124.99"
+    ],
+    "category": "products",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q17",
+    "question": "Can I use the Adidas Predator FG boots on artificial turf?",
+    "ground_truth": "No. The Adidas Predator Accuracy.3 boots are designed for firm ground (natural grass) pitches only. The product listing explicitly states they are not suitable for artificial turf (AG) or hard ground (HG) without the appropriate sole plate.",
+    "reference_contexts": [
+      "Surface: Firm Ground (FG) — suitable for natural grass pitches.",
+      "Not suitable for artificial turf (AG) or hard ground (HG) without appropriate sole plate."
+    ],
+    "category": "products",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q18",
+    "question": "What is the price and warranty on the Fitbit Charge 6?",
+    "ground_truth": "The Fitbit Charge 6 costs £139.99 and includes a 1-year Fitbit Limited Warranty against manufacturing defects.",
+    "reference_contexts": [
+      "Price: £139.99",
+      "Warranty: 1-year Fitbit Limited Warranty."
+    ],
+    "category": "products",
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q19",
+    "question": "Can I cancel my order after placing it?",
+    "ground_truth": "Yes, but only within 1 hour of placing the order and before it has been dispatched. Log in to your account, go to 'My Orders', select the order, and click 'Cancel Order'. If the order has already been dispatched you must wait for delivery and then follow the returns process.",
+    "reference_contexts": [
+      "You may cancel or modify your order within 1 hour of placing it, provided it has not yet been dispatched.",
+      "To do this, log in to your account, go to 'My Orders', select the relevant order, and click 'Cancel Order' or 'Edit Order'.",
+      "If the order has already been dispatched, you will need to follow our returns process once it is delivered."
+    ],
+    "category": "orders",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q20",
+    "question": "What payment methods does ShopNest accept?",
+    "ground_truth": "ShopNest accepts Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and ShopNest Gift Cards. Klarna Buy Now Pay Later is also available — either 3 interest-free instalments or payment deferred by 30 days — for orders over £30, subject to eligibility.",
+    "reference_contexts": [
+      "We accept the following payment methods: Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and ShopNest Gift Cards.",
+      "Yes, we offer Klarna as a Buy Now Pay Later option. You can choose to pay in 3 interest-free instalments or defer payment by 30 days. Klarna is subject to eligibility and credit checks. Minimum order value for Klarna is £30."
+    ],
+    "category": "general",
+    "difficulty": "easy"
+  }
+]
