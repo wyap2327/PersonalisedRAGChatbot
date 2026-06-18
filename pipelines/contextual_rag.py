@@ -1,17 +1,3 @@
-"""
-contextual_rag.py
-
-Contextual (Personalised) RAG pipeline.
-Retrieves query-relevant persona chunks from the customer_personas ChromaDB
-collection (filtered by customer_id), enriches the retrieval query with
-structured profile fields from customers.json, then retrieves and reranks
-knowledge base chunks via the shared pipeline.
-
-The key dissertation hypothesis: personalising both retrieval and LLM context
-with customer-specific data produces more relevant responses than non-personalised
-RAG strategies.
-"""
-
 import os
 import json
 import time
@@ -29,7 +15,6 @@ PERSONA_TOP_K = 3
 
 
 def load_customer(customer_id: str) -> dict | None:
-    """Look up a customer record by customer_id from customers.json."""
     with open(CUSTOMERS_JSON, "r", encoding="utf-8") as f:
         customers = json.load(f)
     for customer in customers:
@@ -38,11 +23,7 @@ def load_customer(customer_id: str) -> dict | None:
     return None
 
 
-def build_enriched_query(query: str, customer: dict) -> str:
-    """
-    Enrich the original query with structured customer profile fields.
-    Used for knowledge base ChromaDB retrieval only.
-    """
+def build_enriched_query(query: str, customer: dict) -> str: # Enrich the original query with structured customer profile fields.
     prefs = customer["preferences"]
     account = customer["account"]
     recent_orders = customer["order_history"][:2]
@@ -76,11 +57,6 @@ def load_vectorstore(collection_name: str):
 
 
 def retrieve_persona_context(query: str, customer_id: str, persona_vectorstore) -> tuple[str, list[str]]:
-    """
-    Query the customer_personas ChromaDB collection for chunks most relevant
-    to the current query, filtered to this customer only.
-    Returns (formatted context string, list of raw chunks).
-    """
     results = persona_vectorstore.similarity_search(
         query,
         k=PERSONA_TOP_K,
@@ -92,18 +68,6 @@ def retrieve_persona_context(query: str, customer_id: str, persona_vectorstore) 
 
 
 def run(query: str, customer_id: str, vectorstore=None, persona_vectorstore=None) -> dict:
-    """
-    Run the Contextual RAG pipeline.
-
-    Args:
-        query               : the customer's question
-        customer_id         : e.g. 'CUST-001'
-        vectorstore         : optional preloaded knowledge_base ChromaDB instance
-        persona_vectorstore : optional preloaded customer_personas ChromaDB instance
-
-    Returns:
-        dict with keys: response, context, persona_chunks, retrieved_chunks, latency_seconds
-    """
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -111,28 +75,25 @@ def run(query: str, customer_id: str, vectorstore=None, persona_vectorstore=None
     if persona_vectorstore is None:
         persona_vectorstore = load_vectorstore("customer_personas")
 
-    # Step 1 — Load structured customer profile (for query enrichment and customer name)
+    # Load structured customer profile
     customer = load_customer(customer_id)
     if not customer:
         return {"error": f"Customer {customer_id} not found."}
 
-    # Step 2 — Retrieve query-relevant persona chunks from ChromaDB (filtered to this customer)
     persona_context, persona_chunks = retrieve_persona_context(query, customer_id, persona_vectorstore)
 
-    # Step 3 — Enrich query with structured profile fields for knowledge base retrieval
     enriched_query = build_enriched_query(query, customer)
 
-    # Step 4 — Retrieve top-k knowledge base chunks using the enriched query
+    # Retrieve top-k knowledge base chunks 
     results = vectorstore.similarity_search(enriched_query, k=TOP_K)
     retrieved_chunks = [doc.page_content for doc in results]
 
-    # Step 5 — Shared pipeline (rerank → repack → compress)
     context = shared_pipeline(query, retrieved_chunks)
 
-    # Step 6 — Combine dynamic persona context and knowledge base context for LLM prompt
+    # Combine persona context and knowledge base context
     full_context = f"--- Customer Profile ---\n{persona_context}\n\n--- Knowledge Base ---\n{context}"
 
-    # Step 7 — Generate personalised response
+    # Generate personalised response
     customer_name = customer["personal_details"]["first_name"]
     response = generate_response(
         query=query,

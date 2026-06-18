@@ -1,14 +1,3 @@
-"""
-baseline_rag.py
-
-Baseline RAG pipeline — the simplest retrieval strategy.
-Embeds the customer query, retrieves the top-k most similar chunks
-from ChromaDB using cosine similarity, then passes them through
-the shared pipeline before generating a response.
-
-No query modification, no personalisation, no hybrid retrieval.
-Serves as the control condition for comparing all other RAG strategies.
-"""
 
 import os
 import time
@@ -23,7 +12,7 @@ EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 10  # chunks retrieved before reranking narrows to 5
 
 
-def load_vectorstore():
+def load_vectorstore(): # Connects to the ChromaDB collection
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
         model_kwargs={"device": "cpu"},
@@ -37,16 +26,6 @@ def load_vectorstore():
 
 
 def run(query: str, vectorstore=None) -> dict:
-    """
-    Run the Baseline RAG pipeline.
-
-    Args:
-        query       : the customer's question
-        vectorstore : optional preloaded ChromaDB instance (avoids reloading)
-
-    Returns:
-        dict with keys: response, context, retrieved_chunks, latency_seconds
-    """
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -73,10 +52,11 @@ def run(query: str, vectorstore=None) -> dict:
         "latency_seconds": latency,
     }
 
-
+'''
 if __name__ == "__main__":
     query = "What is your return policy?"
     print(f"Query: {query}\n")
     result = run(query)
     print(f"Response:\n{result['response']}")
     print(f"\nLatency: {result['latency_seconds']}s")
+'''

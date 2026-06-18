@@ -9,8 +9,7 @@ RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 _reranker = None
 
 
-def _get_reranker():
-    """Load the reranker once and reuse it."""
+def _get_reranker(): #Loads the CrossEncoder model
     global _reranker
     if _reranker is None:
         print(f"  Loading reranker: {RERANKER_MODEL}")
@@ -18,7 +17,9 @@ def _get_reranker():
     return _reranker
 
 
-def rerank(query: str, chunks: list[str], top_k: int = 5) -> list[str]:
+def rerank(query: str, chunks: list[str], top_k: int = 5) -> list[str]: 
+    # Takes the query and all retrieved chunks, pairs each chunk with the query, and use CrossEncoder to score it.
+    
     if not chunks:
         return []
 
@@ -28,14 +29,15 @@ def rerank(query: str, chunks: list[str], top_k: int = 5) -> list[str]:
 
     scored = sorted(zip(scores, chunks), key=lambda x: x[0], reverse=True)
     top_chunks = [chunk for _, chunk in scored[:top_k]]
-    return top_chunks
+    # returns only the top 5
+    return top_chunks 
 
 
-def reverse_repack(chunks: list[str]) -> list[str]:
+def reverse_repack(chunks: list[str]) -> list[str]: # reverses the order
     return list(reversed(chunks))
 
 
-def compress(query: str, chunks: list[str], max_sentences: int = 10) -> str:
+def compress(query: str, chunks: list[str], max_sentences: int = 10) -> str: # Picks the top 10 most relevant sentences
     if not chunks:
         return ""
 
@@ -57,7 +59,7 @@ def compress(query: str, chunks: list[str], max_sentences: int = 10) -> str:
     top_indices = sorted([i for i, _ in scored[:max_sentences]])
     selected = [sentences[i] for i in top_indices]
 
-    return " ".join(selected)
+    return " ".join(selected) # Returns them joined as one string
 
 
 def shared_pipeline(query: str, chunks: list[str], top_k: int = 5) -> str:

@@ -1,13 +1,10 @@
 """
-evaluate.py — Automated RAGAS evaluation for all 6 ShopNest RAG pipelines.
-
 Usage:
-    python evaluate.py           # full run — 20 queries x 6 pipelines
+    python evaluate.py # full run — 20 queries x 6 pipelines
     python evaluate.py --dry-run # 2 queries per pipeline to verify setup
 
-Required packages:
-    pip install ragas datasets langchain-ollama langchain-community
-    pip install sentence-transformers chromadb rank-bm25
+pip install ragas datasets langchain-ollama langchain-community
+pip install sentence-transformers chromadb rank-bm25
 """
 
 import argparse

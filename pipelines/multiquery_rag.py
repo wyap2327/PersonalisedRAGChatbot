@@ -1,15 +1,3 @@
-"""
-multiquery_rag.py
-
-Multi-Query RAG pipeline.
-Uses the LLM to generate N alternative phrasings of the customer's query,
-runs each through ChromaDB separately, merges and deduplicates the results,
-then passes them through the shared pipeline.
-
-Addresses the limitation of single-query retrieval where the exact wording
-of a question may not match how information is stored in the knowledge base.
-"""
-
 import os
 import time
 import ollama
@@ -21,17 +9,15 @@ from pipelines.llm import generate_response, MODEL
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
-TOP_K = 5           # chunks retrieved per query variant
-NUM_VARIANTS = 3    # number of alternative queries to generate
+TOP_K = 5 # chunks retrieved per query variant
+NUM_VARIANTS = 3 # number of alternative queries to generate
 
 
 def generate_query_variants(query: str) -> list[str]:
-    """Ask the LLM to rephrase the query in NUM_VARIANTS different ways."""
     prompt = f"""Generate {NUM_VARIANTS} different ways to ask the following customer support question.
-Each rephrasing should capture the same intent but use different wording.
-Return only the rephrased questions, one per line, with no numbering or extra text.
-
-Original question: {query}"""
+    Each rephrasing should capture the same intent but use different wording.
+    Return only the rephrased questions, one per line with no numbering or extra text.
+    Original question: {query}"""
 
     response = ollama.chat(
         model=MODEL,
@@ -56,16 +42,6 @@ def load_vectorstore():
 
 
 def run(query: str, vectorstore=None) -> dict:
-    """
-    Run the Multi-Query RAG pipeline.
-
-    Args:
-        query       : the customer's original question
-        vectorstore : optional preloaded ChromaDB instance
-
-    Returns:
-        dict with keys: response, context, retrieved_chunks, query_variants, latency_seconds
-    """
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -75,7 +51,7 @@ def run(query: str, vectorstore=None) -> dict:
     variants = generate_query_variants(query)
     all_queries = [query] + variants  # include original query
 
-    # Step 2 — Retrieve chunks for each query variant, deduplicate by content
+    # Step 2 — Retrieve chunks for each query variant
     seen = set()
     retrieved_chunks = []
     for q in all_queries:
@@ -103,7 +79,7 @@ def run(query: str, vectorstore=None) -> dict:
         "latency_seconds": latency,
     }
 
-
+'''
 if __name__ == "__main__":
     query = "How long do I have to send something back?"
     print(f"Query: {query}\n")
@@ -111,3 +87,4 @@ if __name__ == "__main__":
     print(f"Query variants generated: {result['query_variants']}\n")
     print(f"Response:\n{result['response']}")
     print(f"\nLatency: {result['latency_seconds']}s")
+'''

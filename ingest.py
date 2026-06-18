@@ -1,9 +1,5 @@
 """
-Loads all knowledge base documents and customer persona files, chunks and embeds them using BAAI/bge-base-en-v1.5, 
-and stores them in ChromaDB with metadata for filtering.
-
-Run: python ingest.py
-Requirements: pip install langchain langchain-community chromadb sentence-transformers
+pip install langchain langchain-community chromadb sentence-transformers
 """
 
 import os
@@ -76,7 +72,7 @@ def chunk_documents(documents):
     print(f"\n  Total chunks created: {len(chunks)}")
     return chunks
 
-# Embed chunks and store in ChromaDB
+# Convert chunks into embeddings and store in ChromaDB collection
 def build_vectorstore(chunks, collection_name):
     collection_dir = os.path.join(CHROMA_DIR, collection_name)
     if os.path.exists(collection_dir):
