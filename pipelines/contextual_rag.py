@@ -88,7 +88,7 @@ def run(query: str, customer_id: str, vectorstore=None, persona_vectorstore=None
     results = vectorstore.similarity_search(enriched_query, k=TOP_K)
     retrieved_chunks = [doc.page_content for doc in results]
 
-    context = shared_pipeline(query, retrieved_chunks)
+    context = shared_pipeline(enriched_query, retrieved_chunks)
 
     # Combine persona context and knowledge base context
     full_context = f"--- Customer Profile ---\n{persona_context}\n\n--- Knowledge Base ---\n{context}"

@@ -1,7 +1,5 @@
-"""
-Run: streamlit run app.py
-Requirements: pip install streamlit
-"""
+# streamlit run app.py
+# Requirements: pip install streamlit
 
 import time
 import json
@@ -9,10 +7,9 @@ import os
 from datetime import datetime
 import streamlit as st
 
-# ── Page config ───────────────────────────────────────────────────────────────
+# Page config
 st.set_page_config(
     page_title="ShopNest Support",
-    page_icon="👟",
     layout="centered",
 )
 
@@ -22,11 +19,9 @@ LOGS_DIR = os.path.join(BASE_DIR, "logs")
 os.makedirs(LOGS_DIR, exist_ok=True)
 LOG_FILE = os.path.join(LOGS_DIR, "session_log.jsonl")
 
-# MS Forms survey link — replace with your actual link
 SURVEY_LINK = "https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=8l9CbGVo30Kk245q9jSBPU0_B0gWdLJLiBUgwn0d6IVUQktHTlJQTDZNUENKUlJRRE8zWFpENllSRC4u"
 
-# Participant ID → Customer ID mapping
-# Each participant is assigned a persona for the evaluation session
+# Mapping of Participant IDs to Customer IDs
 PARTICIPANT_MAP = {
     "P001": "CUST-001",
     "P002": "CUST-002",
@@ -45,6 +40,7 @@ PARTICIPANT_MAP = {
     "P015": "CUST-015",
 }
 
+# Radio buttons on the sidebar for participant to select
 PIPELINE_OPTIONS = [
     "Baseline RAG",
     "Multi-Query RAG",
@@ -53,16 +49,7 @@ PIPELINE_OPTIONS = [
     "Agentic RAG",
 ]
 
-PIPELINE_DESCRIPTIONS = {
-    "Baseline RAG":    "Standard retrieval — searches the knowledge base directly.",
-    "Multi-Query RAG": "Generates multiple query variants to improve retrieval coverage.",
-    "Contextual RAG":  "Personalises responses using your customer profile.",
-    "Hybrid RAG":      "Combines semantic search and keyword search for broader retrieval.",
-    "Agentic RAG":     "An AI agent that decides what to search and how to answer.",
-}
-
-
-# ── Logging ───────────────────────────────────────────────────────────────────
+# Logging
 def log_interaction(participant_id: str, customer_id: str, pipeline: str, query: str, result: dict):
     entry = {
         "timestamp": datetime.now().isoformat(),
@@ -78,15 +65,14 @@ def log_interaction(participant_id: str, customer_id: str, pipeline: str, query:
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(entry) + "\n")
 
-
-# ── Load customers ─────────────────────────────────────────────────────────────
+# Reads customers.json and caches it into memory to avoid reloading on every message
 @st.cache_resource
 def load_customers():
     with open(CUSTOMERS_JSON, "r", encoding="utf-8") as f:
         return {c["customer_id"]: c for c in json.load(f)}
 
 
-# ── Load pipelines (cached so models only load once) ──────────────────────────
+# Load knowledge base
 @st.cache_resource
 def load_vectorstore():
     from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -102,7 +88,7 @@ def load_vectorstore():
         embedding_function=embeddings,
     )
 
-
+# Load customer personas
 @st.cache_resource
 def load_persona_vectorstore():
     from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -118,16 +104,15 @@ def load_persona_vectorstore():
         embedding_function=embeddings,
     )
 
-
+# Builds the keyword search index and caches it for the session.
 @st.cache_resource
 def load_bm25_index():
     vs = load_vectorstore()
     from pipelines.hybrid_rag import build_bm25_index
     return build_bm25_index(vs)
 
-
+# receives the participant's message and routes it to whichever of the 5 pipelines is selected, then returns the response.
 def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
-    """Route the query to the correct RAG pipeline."""
     vs = load_vectorstore()
 
     if pipeline_name == "Baseline RAG":
@@ -152,7 +137,7 @@ def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
         return run(query=query, vectorstore=vs)
 
 
-# ── Session state defaults ────────────────────────────────────────────────────
+# Session state defaults
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "participant_id" not in st.session_state:
@@ -163,15 +148,12 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "selected_pipeline" not in st.session_state:
     st.session_state.selected_pipeline = "Baseline RAG"
-if "total_queries" not in st.session_state:
-    st.session_state.total_queries = 0
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LOGIN PAGE
-# ══════════════════════════════════════════════════════════════════════════════
+
+# Login page for participants to enter their ID and start the session
 def login_page():
-    st.title("👟 ShopNest Customer Support")
+    st.title("ShopNest Customer Support")
     st.markdown("#### Dissertation Evaluation — Heriot-Watt University")
     st.divider()
 
@@ -182,7 +164,6 @@ def login_page():
 
     participant_id = st.text_input(
         "Participant ID",
-        placeholder="e.g. P001",
         max_chars=10,
     ).strip().upper()
 
@@ -200,16 +181,14 @@ def login_page():
     st.caption("This session is for research purposes only. No personal data is collected.")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# MAIN CHAT PAGE
-# ══════════════════════════════════════════════════════════════════════════════
+# Main chat interface
 def chat_page():
     customers = load_customers()
     customer = customers.get(st.session_state.customer_id, {})
     customer_name = customer.get("personal_details", {}).get("first_name", "Customer")
     tier = customer.get("account", {}).get("membership_tier", "")
 
-    # ── Sidebar ───────────────────────────────────────────────────────────────
+    # Sidebar for participant info and pipeline selection
     with st.sidebar:
         st.markdown(f"### 👤 {customer_name}")
         st.caption(f"Participant: {st.session_state.participant_id}  |  {tier} Member")
@@ -228,7 +207,6 @@ def chat_page():
             st.session_state.messages = []
             st.rerun()
 
-        st.caption(PIPELINE_DESCRIPTIONS[selected])
         st.divider()
 
         if st.button("Clear Chat", use_container_width=True):
@@ -250,8 +228,8 @@ def chat_page():
                 del st.session_state[key]
             st.rerun()
 
-    # ── Main chat area ────────────────────────────────────────────────────────
-    st.title("👟 ShopNest Support")
+    # Main chat area
+    st.title("ShopNest Support")
     st.caption(f"Currently using: **{st.session_state.selected_pipeline}**")
     st.divider()
 
@@ -298,19 +276,7 @@ def chat_page():
             "pipeline": st.session_state.selected_pipeline,
         })
 
-        st.session_state.total_queries += 1
-
-        # Prompt survey after 5 questions
-        if st.session_state.total_queries > 0 and st.session_state.total_queries % 5 == 0:
-            st.info(
-                f"You have asked {st.session_state.total_queries} questions. "
-                f"Remember to complete the survey after testing all 5 systems."
-            )
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# ROUTER
-# ══════════════════════════════════════════════════════════════════════════════
+# Checks if the participant is logged in
 if st.session_state.logged_in:
     chat_page()
 else:

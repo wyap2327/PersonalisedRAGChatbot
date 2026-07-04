@@ -1,10 +1,6 @@
 """
-Usage:
-    python evaluate.py # full run — 20 queries x 6 pipelines
-    python evaluate.py --dry-run # 2 queries per pipeline to verify setup
-
-pip install ragas datasets langchain-ollama langchain-community
-pip install sentence-transformers chromadb rank-bm25
+python evaluate.py # full run — 20 queries x 6 pipelines
+python evaluate.py --dry-run # 2 queries per pipeline to verify setup
 """
 
 import argparse
@@ -13,6 +9,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from unittest import result
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
@@ -21,6 +18,7 @@ from ragas.dataset_schema import SingleTurnSample
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 from ragas.metrics import AnswerRelevancy, ContextPrecision, ContextRecall, Faithfulness
+from ragas.run_config import RunConfig
 from langchain_ollama import ChatOllama
 
 from pipelines import agentic_rag, baseline_rag, contextual_rag, hybrid_rag, multiquery_rag
@@ -30,7 +28,9 @@ BASE_DIR = Path(__file__).parent
 DATASET_PATH = BASE_DIR / "ragas_test_dataset.json"
 RESULTS_DIR = BASE_DIR / "evaluation_results"
 
-LLM_MODEL = "llama3.1:8b"
+#LLM_MODEL = "llama3.1:8b"
+LLM_MODEL = "qwen2.5:14b"
+#LLM_MODEL = "qwen2.5:7b"
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 CUSTOMER_ID = "CUST-001"
 
@@ -43,14 +43,13 @@ PIPELINES = [
 ]
 
 
-# ── Setup ──────────────────────────────────────────────────────────────────────
-
+# Reads ragas_test_dataset.json (20 questions). Dry run only loads the first 2 queries for quick testing.
 def load_dataset(dry_run: bool) -> list[dict]:
     with open(DATASET_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data[:2] if dry_run else data
 
-
+#  Loads the ChromaDB databases
 def setup_vectorstores():
     print("Loading vectorstores...")
     embeddings = HuggingFaceEmbeddings(
@@ -68,14 +67,15 @@ def setup_vectorstores():
         persist_directory=str(BASE_DIR / "chroma_db" / "customer_personas"),
         embedding_function=embeddings,
     )
+    # builds the BM25 index
     bm25, corpus = build_bm25_index(kb_vs)
     print("  Done.\n")
     return kb_vs, persona_vs, bm25, corpus
 
-
+# Configures RAGAS scoring metrics using llama3.1:8b as the judge
 def setup_ragas_metrics():
     print("Configuring RAGAS metrics...")
-    llm = LangchainLLMWrapper(ChatOllama(model=LLM_MODEL, temperature=0))
+    llm = LangchainLLMWrapper(ChatOllama(model=LLM_MODEL, temperature=0, format="json"))
     emb = LangchainEmbeddingsWrapper(
         HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
@@ -93,7 +93,7 @@ def setup_ragas_metrics():
     return metrics
 
 
-# ── Pipeline runner ────────────────────────────────────────────────────────────
+# Sends the question to whichever pipeline is being evaluated and returns the result.
 
 def run_query(pipeline_name: str, query: str, kb_vs, persona_vs, bm25, corpus) -> dict:
     if pipeline_name == "baseline_rag":
@@ -107,7 +107,8 @@ def run_query(pipeline_name: str, query: str, kb_vs, persona_vs, bm25, corpus) -
     elif pipeline_name == "agentic_rag":
         return agentic_rag.run(query=query, vectorstore=kb_vs)
 
-
+# Pulls the retrieved chunks out of the result dict so RAGAS can score them. Each pipeline stores chunks
+# slightly differently, so this handles each case.
 def extract_contexts(pipeline_name: str, result: dict) -> list[str]:
     if pipeline_name == "contextual_rag":
         chunks = result.get("persona_chunks", []) + result.get("retrieved_chunks", [])
@@ -122,7 +123,10 @@ def extract_contexts(pipeline_name: str, result: dict) -> list[str]:
         return chunks or [result.get("context", "")]
 
 
-# ── Evaluation ─────────────────────────────────────────────────────────────────
+#   The main evaluation loop for one pipeline:
+#  1. Loops through every test question, runs it through the pipeline, records the answer, contexts, and latency
+#  2. Passes all answers to RAGAS for scoring
+#  3. Returns the scores and average latency
 
 def evaluate_pipeline(pipeline_name: str, test_cases: list[dict], kb_vs, persona_vs, bm25, corpus, metrics) -> dict:
     print(f"{'='*60}")
@@ -170,7 +174,7 @@ def evaluate_pipeline(pipeline_name: str, test_cases: list[dict], kb_vs, persona
         )
         for s in valid
     ]
-    result = evaluate(dataset=EvaluationDataset(samples=ragas_samples), metrics=metrics)
+    result = evaluate(dataset=EvaluationDataset(samples=ragas_samples), metrics=metrics, run_config=RunConfig(timeout=300, max_workers=1))
     scores = {k: round(float(v), 4) for k, v in result.to_pandas().mean(numeric_only=True).items()}
     for k, v in scores.items():
         print(f"    {k}: {v}")
@@ -184,7 +188,7 @@ def evaluate_pipeline(pipeline_name: str, test_cases: list[dict], kb_vs, persona
     }
 
 
-# ── Output ─────────────────────────────────────────────────────────────────────
+# Prints a formatted table to the terminal comparing all 5 pipelines side by side across the 4 metrics plus latency.
 
 def print_summary(all_results: list[dict]) -> None:
     print("\n" + "=" * 76)
@@ -207,7 +211,7 @@ def print_summary(all_results: list[dict]) -> None:
         print("  " + "  ".join(str(c).ljust(w) for c, w in zip(cells, widths)))
     print("=" * 76)
 
-
+# Saves the results to evaluation_results
 def save_results(all_results: list[dict], dry_run: bool) -> None:
     RESULTS_DIR.mkdir(exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -236,7 +240,8 @@ def save_results(all_results: list[dict], dry_run: bool) -> None:
     print(f"  Saved → {csv_path.name}")
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
+#  Runs everything in order: 
+#  load dataset → load vectorstores → configure metrics → evaluate each pipeline → print summary → save results.
 
 def main():
     parser = argparse.ArgumentParser()

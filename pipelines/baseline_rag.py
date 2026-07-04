@@ -52,11 +52,10 @@ def run(query: str, vectorstore=None) -> dict:
         "latency_seconds": latency,
     }
 
-'''
+
 if __name__ == "__main__":
-    query = "What is your return policy?"
+    query = "What is my loyalty points balance and how do I redeem them?"
     print(f"Query: {query}\n")
     result = run(query)
     print(f"Response:\n{result['response']}")
     print(f"\nLatency: {result['latency_seconds']}s")
-'''

@@ -48,7 +48,11 @@ Oversized Delivery	23:59	3 to 14 Working Days	£19.99
 Premium Oversized Delivery	23:59	3 to 5 Days	£49.99
 
 Q: Are there free delivery?
-A: Standard delivery is FREE for all UK orders with a basket value of £50 or more (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required. Free delivery does not apply to express or next day delivery options.
+A: Standard delivery is FREE based on your ShopNest Rewards membership tier and order value (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required.
+    - Bronze members: free standard delivery on orders over £50.
+    - Silver members: free standard delivery on orders over £40.
+    - Gold members: free standard delivery on all orders, plus free express delivery on orders over £75.
+Free express delivery does not apply unless you are a Gold member ordering over £75.
 
 Q: Failed delivery
 A:
