@@ -246,11 +246,14 @@ def save_results(all_results: list[dict], dry_run: bool) -> None:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="Run 2 queries per pipeline instead of 20")
+    parser.add_argument("--pipeline", choices=PIPELINES, action="append", dest="pipelines", help="Restrict the run to one pipeline (repeatable). Default: all pipelines.")
     args = parser.parse_args()
+    pipelines_to_run = args.pipelines or PIPELINES
 
     print("\nShopNest RAG — RAGAS Evaluation")
     if args.dry_run:
         print("(dry-run: 2 queries per pipeline)\n")
+    print(f"Pipelines: {', '.join(pipelines_to_run)}\n")
 
     test_cases = load_dataset(args.dry_run)
     print(f"{len(test_cases)} test cases loaded.\n")
@@ -265,7 +268,7 @@ def main():
     metrics = setup_ragas_metrics()
 
     all_results = []
-    for pipeline_name in PIPELINES:
+    for pipeline_name in pipelines_to_run:
         result = evaluate_pipeline(pipeline_name, test_cases, kb_vs, persona_vs, bm25, corpus, metrics)
         all_results.append(result)
         print()

@@ -56,12 +56,11 @@
   {
     "id": "Q06",
     "question": "What UK delivery options does ShopNest offer and how much do they cost?",
-    "ground_truth": "ShopNest offers four UK delivery options: Standard Delivery at £3.99 (free on orders over £50, 3–5 business days); Express Delivery at £6.99 (1–2 business days); Next Day Delivery at £9.99 (guaranteed next business day if ordered before 11pm); and Click and Collect for free (2–4 business days at over 3,000 locations).",
+    "ground_truth": "ShopNest offers several UK delivery options: Standard Delivery at £4.99 (order before 23:59, 3–7 days); Express Delivery at £7.99 (order before 21:00, 48 hours); Next Day Delivery at £9.99, or via DPD at £11.99 (both ordered before 21:00); Local Collection/Locker at £4.99 (3–7 days); Oversized Delivery (Light & Large by EVRI) at £9.99 (3–7 days); Special Delivery at £19.99 (5–7 days); standard Oversized Delivery at £19.99 (3–14 working days); 2 Man Delivery at £49.99 (3–14 working days); and Premium Oversized Delivery at £49.99 (3–5 days).",
     "reference_contexts": [
-      "Standard Delivery: Cost: £3.99 per order. FREE on all orders over £50. Estimated delivery: 3–5 business days from dispatch.",
-      "Express Delivery: Cost: £6.99 per order. Estimated delivery: 1–2 business days from dispatch.",
-      "Next Day Delivery: Cost: £9.99 per order. Guaranteed next business day delivery when ordered before 11pm (GMT).",
-      "Click and Collect: Cost: FREE. Available at over 3,000 collection points across the UK. Orders are ready for collection within 2–4 business days."
+      "ShopNest offers the following delivery options for all UK orders: Standard Delivery, order before 23:59, 3 to 7 days, £4.99. Express Delivery, order before 21:00, 48 hours, £7.99. Next Day Delivery, order before 21:00, next day, £9.99.",
+      "Next Day Delivery by DPD, order before 21:00, next day, £11.99. Local Collection/Locker, order before 23:59, 3 to 7 days, £4.99. Oversized Delivery (Light & Large by EVRI), order before 23:59, 3 to 7 days, £9.99.",
+      "Special Delivery, order before 23:59, 5 to 7 days, £19.99. Oversized Delivery, order before 23:59, 3 to 14 working days, £19.99. 2 Man Delivery, order before 23:59, 3 to 14 working days, £49.99. Premium Oversized Delivery, order before 23:59, 3 to 5 days, £49.99."
     ],
     "category": "delivery",
     "difficulty": "easy"
@@ -69,9 +68,13 @@
   {
     "id": "Q07",
     "question": "At what basket value does standard delivery become free?",
-    "ground_truth": "Standard delivery is free on all UK orders with a basket value of £50 or more, calculated after any discounts are applied. No code is required — it is applied automatically at checkout.",
+    "ground_truth": "It depends on ShopNest Rewards membership tier: Bronze members get free standard delivery on orders over £50; Silver members over £40; Gold members get free standard delivery on all orders, plus free express delivery on orders over £75. Free delivery is applied automatically at checkout after any discounts — no code is required.",
     "reference_contexts": [
-      "Standard delivery is FREE for all UK orders with a basket value of £50 or more (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required."
+      "Standard delivery is FREE based on your ShopNest Rewards membership tier and order value (after any discounts are applied). Free delivery is automatically applied at checkout — no code is required.",
+      "Bronze members: free standard delivery on orders over £50.",
+      "Silver members: free standard delivery on orders over £40.",
+      "Gold members: free standard delivery on all orders, plus free express delivery on orders over £75.",
+      "Free express delivery does not apply unless you are a Gold member ordering over £75."
     ],
     "category": "delivery",
     "difficulty": "easy"
@@ -79,9 +82,10 @@
   {
     "id": "Q08",
     "question": "What time must I order by to guarantee next day delivery?",
-    "ground_truth": "Next Day Delivery is guaranteed when ordered before 11pm GMT. Orders placed on Friday will arrive on Monday, as the service is available Monday to Thursday only.",
+    "ground_truth": "Next Day Delivery must be ordered before 21:00 to arrive the next day, at a cost of £9.99. A DPD-branded Next Day option is also available for £11.99, also ordered before 21:00.",
     "reference_contexts": [
-      "Next Day Delivery: Guaranteed next business day delivery when ordered before 11pm (GMT). Available Monday to Thursday (orders placed Friday will arrive Monday)."
+      "Next Day Delivery, order before 21:00, next day, £9.99.",
+      "Next Day Delivery by DPD, order before 21:00, next day, £11.99."
     ],
     "category": "delivery",
     "difficulty": "medium"
@@ -100,13 +104,15 @@
   },
   {
     "id": "Q10",
-    "question": "How much does it cost to deliver to EU countries and how long does it take?",
-    "ground_truth": "EU delivery costs £12.99 per order and takes 5–10 business days from dispatch. Customers are responsible for any import duties, VAT, or customs fees applicable in their country.",
+    "question": "When is a parcel considered lost, and what happens if it's confirmed lost?",
+    "ground_truth": "A parcel is considered lost if it hasn't been delivered within 10 business days of the expected delivery date for UK orders, or 28 business days for international orders. Contact support to raise a formal investigation with the courier, which typically takes 5–10 business days. If confirmed lost, ShopNest will dispatch a replacement order at no cost or issue a full refund including the original delivery charges.",
     "reference_contexts": [
-      "European Union (EU): Cost: £12.99 per order. Estimated delivery: 5–10 business days from dispatch. Note: Customers are responsible for any import duties, VAT, or customs fees applicable in their country."
+      "A parcel is considered lost if it has not been delivered within 10 business days of the expected delivery date (UK) or 28 business days (international).",
+      "Contact our support team who will raise a formal investigation with the courier. Investigations typically take 5–10 business days.",
+      "If confirmed lost, we will dispatch a replacement order at no cost or issue a full refund including original delivery charges."
     ],
     "category": "delivery",
-    "difficulty": "easy"
+    "difficulty": "medium"
   },
   {
     "id": "Q11",
