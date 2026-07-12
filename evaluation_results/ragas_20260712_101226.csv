@@ -1,0 +1,2 @@
+pipeline,faithfulness,answer_relevancy,context_precision,context_recall,avg_latency_seconds
+contextual_rag,0.8542,0.6194,0.9375,1.0,12.762

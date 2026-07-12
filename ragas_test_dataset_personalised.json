@@ -1,0 +1,58 @@
+[
+  {
+    "id": "PQ1",
+    "category": "Personalised",
+    "difficulty": "Easy",
+    "question": "What is my current loyalty points balance and membership tier?",
+    "ground_truth": "You have 2,340 loyalty points and are a Gold tier member."
+  },
+  {
+    "id": "PQ2",
+    "category": "Personalised",
+    "difficulty": "Easy",
+    "question": "What sports or activities am I interested in?",
+    "ground_truth": "Running, cycling, and triathlon training."
+  },
+  {
+    "id": "PQ3",
+    "category": "Personalised",
+    "difficulty": "Easy",
+    "question": "What brands do I usually buy?",
+    "ground_truth": "ASICS, Nike, and Adidas."
+  },
+  {
+    "id": "PQ4",
+    "category": "Personalised",
+    "difficulty": "Easy",
+    "question": "What did I purchase in my most recent order?",
+    "ground_truth": "An ASICS Gel-Nimbus 25 and Nike Phenom Elite Running Tights."
+  },
+  {
+    "id": "PQ5",
+    "category": "Personalised",
+    "difficulty": "Medium",
+    "question": "Have I contacted ShopNest support before, and what did I ask about?",
+    "ground_truth": "Yes, on two occasions - you asked about the manufacturer warranty on your ASICS Gel-Nimbus 25 after noticing a midsole separation, and separately asked whether an order qualified for free standard delivery."
+  },
+  {
+    "id": "PQ6",
+    "category": "Personalised",
+    "difficulty": "Medium",
+    "question": "What was the most recent issue I contacted support about?",
+    "ground_truth": "You asked about the manufacturer warranty on your ASICS Gel-Nimbus 25 after noticing a midsole separation."
+  },
+  {
+    "id": "PQ7",
+    "category": "Personalised",
+    "difficulty": "Medium",
+    "question": "Did I previously ask about the delivery cost for a specific order, and if so what was the order total?",
+    "ground_truth": "Yes - you asked whether a £181.98 order qualified for free standard delivery."
+  },
+  {
+    "id": "PQ8",
+    "category": "Personalised",
+    "difficulty": "Hard",
+    "question": "Am I a Gold member, and have I ever raised a product quality concern with support?",
+    "ground_truth": "Yes, you are a Gold tier member, and you previously raised a product quality concern about your ASICS Gel-Nimbus 25 developing a midsole separation."
+  }
+]

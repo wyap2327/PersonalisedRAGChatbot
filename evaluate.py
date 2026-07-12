@@ -25,14 +25,15 @@ from pipelines import agentic_rag, baseline_rag, contextual_rag, hybrid_rag, mul
 from pipelines.hybrid_rag import build_bm25_index
 
 BASE_DIR = Path(__file__).parent
-DATASET_PATH = BASE_DIR / "ragas_test_dataset.json"
+#DATASET_PATH = BASE_DIR / "ragas_test_dataset.json"
+DATASET_PATH = BASE_DIR / "ragas_test_dataset_personalised.json"
 RESULTS_DIR = BASE_DIR / "evaluation_results"
 
 #LLM_MODEL = "llama3.1:8b"
 LLM_MODEL = "qwen2.5:14b"
 #LLM_MODEL = "qwen2.5:7b"
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
-CUSTOMER_ID = "CUST-001"
+CUSTOMER_ID = "CUST-011"
 
 PIPELINES = [
     "baseline_rag",

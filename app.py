@@ -49,6 +49,10 @@ PIPELINE_OPTIONS = [
     "Agentic RAG",
 ]
 
+# Participant-facing labels — hides pipeline identity during human evaluation.
+# Same order as PIPELINE_OPTIONS; real names are still recorded in the logs.
+BLIND_LABELS = ["System A", "System B", "System C", "System D", "System E"]
+
 # Logging
 def log_interaction(participant_id: str, customer_id: str, pipeline: str, query: str, result: dict):
     entry = {
@@ -194,13 +198,14 @@ def chat_page():
         st.caption(f"Participant: {st.session_state.participant_id}  |  {tier} Member")
         st.divider()
 
-        st.markdown("**Select RAG System**")
-        selected = st.radio(
-            label="RAG System",
-            options=PIPELINE_OPTIONS,
+        st.markdown("**Select System**")
+        selected_label = st.radio(
+            label="System",
+            options=BLIND_LABELS,
             index=PIPELINE_OPTIONS.index(st.session_state.selected_pipeline),
             label_visibility="collapsed",
         )
+        selected = PIPELINE_OPTIONS[BLIND_LABELS.index(selected_label)]
 
         if selected != st.session_state.selected_pipeline:
             st.session_state.selected_pipeline = selected
@@ -214,9 +219,9 @@ def chat_page():
             st.rerun()
 
         st.divider()
-        st.markdown("**Completed all 5 systems?**")
+        st.markdown("**Completed a system?**")
         st.link_button(
-            "Complete the Survey",
+            "Start the survey",
             url=SURVEY_LINK,
             use_container_width=True,
             type="primary",
@@ -230,7 +235,8 @@ def chat_page():
 
     # Main chat area
     st.title("ShopNest Support")
-    st.caption(f"Currently using: **{st.session_state.selected_pipeline}**")
+    current_label = BLIND_LABELS[PIPELINE_OPTIONS.index(st.session_state.selected_pipeline)]
+    st.caption(f"Currently using: **{current_label}**")
     st.divider()
 
     # Display chat history
