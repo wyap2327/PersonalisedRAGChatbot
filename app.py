@@ -150,7 +150,6 @@ if "selected_pipeline" not in st.session_state:
 
 
 
-# Login page for participants to enter their ID and start the session
 def login_page():
     st.title("ShopNest Customer Support")
     st.markdown("#### Dissertation Evaluation — Heriot-Watt University")
@@ -227,10 +226,8 @@ def chat_page():
     st.caption(f"Currently using: **{current_label}**")
     st.divider()
 
-    current_messages = st.session_state.messages_by_pipeline[st.session_state.selected_pipeline]
-
-    # Display chat history (only for the currently selected system)
-    for msg in current_messages:
+    # Display chat history
+    for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
             if msg["role"] == "assistant" and "latency" in msg:
@@ -239,7 +236,7 @@ def chat_page():
     # Chat input
     if prompt := st.chat_input("Ask a question about your order, returns, delivery..."):
         # Display user message
-        current_messages.append({"role": "user", "content": prompt})
+        st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
@@ -265,7 +262,7 @@ def chat_page():
             st.markdown(response)
             st.caption(f"Response time: {latency}s")
 
-        current_messages.append({
+        st.session_state.messages.append({
             "role": "assistant",
             "content": response,
             "latency": latency,
