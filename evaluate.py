@@ -44,7 +44,7 @@ PIPELINES = [
 ]
 
 
-# Reads ragas_test_dataset.json (20 questions). Dry run only loads the first 2 queries for quick testing.
+# Dry run loads 2 queries for quick testing.
 def load_dataset(dry_run: bool) -> list[dict]:
     with open(DATASET_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -124,10 +124,9 @@ def extract_contexts(pipeline_name: str, result: dict) -> list[str]:
         return chunks or [result.get("context", "")]
 
 
-#   The main evaluation loop for one pipeline:
-#  1. Loops through every test question, runs it through the pipeline, records the answer, contexts, and latency
-#  2. Passes all answers to RAGAS for scoring
-#  3. Returns the scores and average latency
+#  Loops through every test question, runs it through the pipeline, records the answer, contexts, and latency
+#  Passes all answers to RAGAS for scoring
+#  Returns the scores and average latency
 
 def evaluate_pipeline(pipeline_name: str, test_cases: list[dict], kb_vs, persona_vs, bm25, corpus, metrics) -> dict:
     print(f"{'='*60}")
@@ -189,28 +188,17 @@ def evaluate_pipeline(pipeline_name: str, test_cases: list[dict], kb_vs, persona
     }
 
 
-# Prints a formatted table to the terminal comparing all 5 pipelines side by side across the 4 metrics plus latency.
-
-def print_summary(all_results: list[dict]) -> None:
-    print("\n" + "=" * 76)
-    print("  SUMMARY")
-    print("=" * 76)
-    headers = ["Pipeline", "Faithfulness", "Ans.Relevancy", "Ctx Precision", "Ctx Recall", "Latency"]
-    widths   = [20,         13,             14,              14,              11,           9]
-    print("  " + "  ".join(h.ljust(w) for h, w in zip(headers, widths)))
-    print("  " + "-" * (sum(widths) + 2 * (len(widths) - 1)))
-    for r in all_results:
-        s = r["ragas_scores"]
-        cells = [
-            r["pipeline"],
-            str(s.get("faithfulness", "N/A")),
-            str(s.get("answer_relevancy", "N/A")),
-            str(s.get("context_precision", "N/A")),
-            str(s.get("context_recall", "N/A")),
-            f"{r['avg_latency_seconds']:.2f}s",
-        ]
-        print("  " + "  ".join(str(c).ljust(w) for c, w in zip(cells, widths)))
-    print("=" * 76)
+def print_summary(all_results):
+      print("\nSUMMARY")
+      for r in all_results:
+          s = r["ragas_scores"]
+          print(f"{r['pipeline']}:")
+          print(f"  Faithfulness:  {s['faithfulness']}")
+          print(f"  Ans.Relevancy: {s['answer_relevancy']}")
+          print(f"  Ctx Precision: {s['context_precision']}")
+          print(f"  Ctx Recall:    {s['context_recall']}")
+          print(f"  Latency:       {r['avg_latency_seconds']:.2f}s")
+          print()
 
 # Saves the results to evaluation_results
 def save_results(all_results: list[dict], dry_run: bool) -> None:
@@ -237,21 +225,20 @@ def save_results(all_results: list[dict], dry_run: bool) -> None:
                 r["avg_latency_seconds"],
             ])
 
-    print(f"\n  Saved → {json_path.name}")
-    print(f"  Saved → {csv_path.name}")
+    print(f"\n  Saved -> {json_path.name}")
+    print(f"  Saved -> {csv_path.name}")
 
 
-#  Runs everything in order: 
-#  load dataset → load vectorstores → configure metrics → evaluate each pipeline → print summary → save results.
 
+#  load dataset -> load vectorstores -> configure metrics -> evaluate each pipeline -> print summary -> save results.
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Run 2 queries per pipeline instead of 20")
-    parser.add_argument("--pipeline", choices=PIPELINES, action="append", dest="pipelines", help="Restrict the run to one pipeline (repeatable). Default: all pipelines.")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--pipeline", choices=PIPELINES)
     args = parser.parse_args()
     pipelines_to_run = args.pipelines or PIPELINES
 
-    print("\nShopNest RAG — RAGAS Evaluation")
+    print("\nRAGAS Evaluation")
     if args.dry_run:
         print("(dry-run: 2 queries per pipeline)\n")
     print(f"Pipelines: {', '.join(pipelines_to_run)}\n")

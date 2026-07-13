@@ -1,13 +1,6 @@
 """
-hybrid_rag.py
-
-Hybrid RAG pipeline.
-Combines dense vector search (ChromaDB) with sparse keyword search (BM25)
-and merges results using Reciprocal Rank Fusion (RRF).
-
-Dense retrieval is good at finding semantically similar content.
-Sparse retrieval is good at finding exact keyword matches (e.g. product SKUs,
-policy terms). Combining both captures what either alone would miss.
+Dense retrieval - semantic similarity search
+Sparse retrieval - keyword-matching search (BM25)
 """
 
 import os
@@ -24,13 +17,9 @@ EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 10      # chunks retrieved from each method before fusion
 RRF_K = 60      # RRF constant — standard value from the original paper
 
-
+# Takes the two result lists and merges them into one ranked list. 
+# Each chunk gets a score - a chunk appearing near the top of both gets the highest combined score.
 def reciprocal_rank_fusion(dense_chunks: list[str], sparse_chunks: list[str]) -> list[str]:
-    """
-    Merge two ranked lists using Reciprocal Rank Fusion (RRF).
-    RRF score for a document: sum(1 / (k + rank)) across all lists.
-    Higher score = more relevant across both retrieval methods.
-    """
     scores = {}
     for rank, chunk in enumerate(dense_chunks):
         scores[chunk] = scores.get(chunk, 0) + 1 / (RRF_K + rank + 1)
@@ -55,27 +44,14 @@ def load_vectorstore():
 
 
 def build_bm25_index(vectorstore: Chroma):
-    """Build a BM25 index from all chunks stored in ChromaDB."""
     all_docs = vectorstore.get()
     corpus = all_docs["documents"]
     tokenised = [doc.lower().split() for doc in corpus]
-    bm25 = BM25Okapi(tokenised)
+    bm25 = BM25Okapi(tokenised) # keyword search index
     return bm25, corpus
 
 
 def run(query: str, vectorstore=None, bm25=None, corpus=None) -> dict:
-    """
-    Run the Hybrid RAG pipeline.
-
-    Args:
-        query       : the customer's question
-        vectorstore : optional preloaded ChromaDB instance
-        bm25        : optional preloaded BM25 index
-        corpus      : optional list of all corpus documents (parallel to BM25 index)
-
-    Returns:
-        dict with keys: response, context, retrieved_chunks, latency_seconds
-    """
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -84,11 +60,11 @@ def run(query: str, vectorstore=None, bm25=None, corpus=None) -> dict:
     if bm25 is None or corpus is None:
         bm25, corpus = build_bm25_index(vectorstore)
 
-    # Step 1 — Dense retrieval via ChromaDB
+    # Step 1 — semantic similarity search
     dense_results = vectorstore.similarity_search(query, k=TOP_K)
     dense_chunks = [doc.page_content for doc in dense_results]
 
-    # Step 2 — Sparse retrieval via BM25
+    # Step 2 — keyword-matching search via BM25
     tokenised_query = query.lower().split()
     bm25_scores = bm25.get_scores(tokenised_query)
     top_bm25_indices = sorted(range(len(bm25_scores)), key=lambda i: bm25_scores[i], reverse=True)[:TOP_K]

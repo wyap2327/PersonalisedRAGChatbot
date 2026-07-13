@@ -1,18 +1,3 @@
-"""
-agentic_rag.py
-
-Agentic RAG pipeline.
-A LangGraph ReAct agent that autonomously decides how to retrieve information
-using two tools:
-  - SearchKnowledgeBase : semantic search over ChromaDB
-  - GetFullDocument     : retrieves the full source document by filename
-                          when chunks alone are insufficient
-
-The agent reflects on retrieved results and can call tools multiple times
-before generating a final answer — handling complex, multi-step queries
-that simpler pipelines cannot resolve in a single retrieval step.
-"""
-
 import os
 import time
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -51,12 +36,6 @@ def _get_vectorstore():
 
 @tool
 def SearchKnowledgeBase(query: str) -> str:
-    """
-    Search the ShopNest knowledge base for information relevant to the query.
-    Use this for questions about policies, products, delivery, returns, or loyalty points.
-    Input: a search query string.
-    Output: the most relevant text passages found.
-    """
     vs = _get_vectorstore()
     results = vs.similarity_search(query, k=TOP_K)
     chunks = [doc.page_content for doc in results]
@@ -65,14 +44,6 @@ def SearchKnowledgeBase(query: str) -> str:
 
 @tool
 def GetFullDocument(filename: str) -> str:
-    """
-    Retrieve the full text of a ShopNest knowledge base document by filename.
-    Use this when chunks from SearchKnowledgeBase are insufficient or incomplete.
-    Available filenames: faq.txt, delivery_shipping.txt, loyalty_points.txt,
-    returns_refunds.txt, product_catalogue.txt
-    Input: the exact filename (e.g. 'returns_refunds.txt').
-    Output: the full document text.
-    """
     for root, _, files in os.walk(KNOWLEDGE_BASE_DIR):
         if filename in files:
             filepath = os.path.join(root, filename)
@@ -82,16 +53,6 @@ def GetFullDocument(filename: str) -> str:
 
 
 def run(query: str, vectorstore=None) -> dict:
-    """
-    Run the Agentic RAG pipeline.
-
-    Args:
-        query       : the customer's question
-        vectorstore : optional preloaded ChromaDB instance
-
-    Returns:
-        dict with keys: response, context, latency_seconds
-    """
     start = time.perf_counter()
 
     if vectorstore is not None:
@@ -110,7 +71,6 @@ def run(query: str, vectorstore=None) -> dict:
     tool_outputs = [m.content for m in result["messages"] if isinstance(m, ToolMessage)]
 
     if tool_outputs:
-        # Flatten tool outputs into individual chunks.
         # SearchKnowledgeBase joins chunks with "\n\n---\n\n"; GetFullDocument returns plain text.
         all_chunks = []
         for output in tool_outputs:
@@ -119,7 +79,6 @@ def run(query: str, vectorstore=None) -> dict:
             elif output.strip() and output.strip() != "No relevant information found.":
                 all_chunks.append(output.strip())
 
-        # Shared pipeline (rerank → repack → compress) — consistent with all other pipelines
         context = shared_pipeline(query, all_chunks) if all_chunks else "No relevant information found."
         response = generate_response(query=query, context=context)
     else:

@@ -5,6 +5,8 @@ import time
 import json
 import os
 from datetime import datetime
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
 import streamlit as st
 
 # Page config
@@ -49,8 +51,7 @@ PIPELINE_OPTIONS = [
     "Agentic RAG",
 ]
 
-# Participant-facing labels — hides pipeline identity during human evaluation.
-# Same order as PIPELINE_OPTIONS; real names are still recorded in the logs.
+# hides pipeline identity during human evaluation.
 BLIND_LABELS = ["System A", "System B", "System C", "System D", "System E"]
 
 # Logging
@@ -79,8 +80,6 @@ def load_customers():
 # Load knowledge base
 @st.cache_resource
 def load_vectorstore():
-    from langchain_community.embeddings import HuggingFaceEmbeddings
-    from langchain_community.vectorstores import Chroma
     embeddings = HuggingFaceEmbeddings(
         model_name="BAAI/bge-base-en-v1.5",
         model_kwargs={"device": "cpu"},
@@ -95,8 +94,6 @@ def load_vectorstore():
 # Load customer personas
 @st.cache_resource
 def load_persona_vectorstore():
-    from langchain_community.embeddings import HuggingFaceEmbeddings
-    from langchain_community.vectorstores import Chroma
     embeddings = HuggingFaceEmbeddings(
         model_name="BAAI/bge-base-en-v1.5",
         model_kwargs={"device": "cpu"},
@@ -140,16 +137,14 @@ def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
         from pipelines.agentic_rag import run
         return run(query=query, vectorstore=vs)
 
-
-# Session state defaults
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 if "participant_id" not in st.session_state:
     st.session_state.participant_id = None
 if "customer_id" not in st.session_state:
     st.session_state.customer_id = None
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+if "messages_by_pipeline" not in st.session_state:
+    st.session_state.messages_by_pipeline = {p: [] for p in PIPELINE_OPTIONS}
 if "selected_pipeline" not in st.session_state:
     st.session_state.selected_pipeline = "Baseline RAG"
 
@@ -176,7 +171,7 @@ def login_page():
             st.session_state.logged_in = True
             st.session_state.participant_id = participant_id
             st.session_state.customer_id = PARTICIPANT_MAP[participant_id]
-            st.session_state.messages = []
+            st.session_state.messages_by_pipeline = {p: [] for p in PIPELINE_OPTIONS}
             st.rerun()
         else:
             st.error("Participant ID not recognised. Please check with the researcher.")
@@ -209,13 +204,6 @@ def chat_page():
 
         if selected != st.session_state.selected_pipeline:
             st.session_state.selected_pipeline = selected
-            st.session_state.messages = []
-            st.rerun()
-
-        st.divider()
-
-        if st.button("Clear Chat", use_container_width=True):
-            st.session_state.messages = []
             st.rerun()
 
         st.divider()
@@ -239,8 +227,10 @@ def chat_page():
     st.caption(f"Currently using: **{current_label}**")
     st.divider()
 
-    # Display chat history
-    for msg in st.session_state.messages:
+    current_messages = st.session_state.messages_by_pipeline[st.session_state.selected_pipeline]
+
+    # Display chat history (only for the currently selected system)
+    for msg in current_messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
             if msg["role"] == "assistant" and "latency" in msg:
@@ -249,7 +239,7 @@ def chat_page():
     # Chat input
     if prompt := st.chat_input("Ask a question about your order, returns, delivery..."):
         # Display user message
-        st.session_state.messages.append({"role": "user", "content": prompt})
+        current_messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
@@ -275,7 +265,7 @@ def chat_page():
             st.markdown(response)
             st.caption(f"Response time: {latency}s")
 
-        st.session_state.messages.append({
+        current_messages.append({
             "role": "assistant",
             "content": response,
             "latency": latency,

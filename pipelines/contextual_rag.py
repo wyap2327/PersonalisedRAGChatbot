@@ -22,7 +22,7 @@ def load_customer(customer_id: str) -> dict | None:
             return customer
     return None
 
-
+# Not used - testing showed it hurt retrieval accuracy by pulling in irrelevant chunks based on brand/product terms
 def build_enriched_query(query: str, customer: dict) -> str: # Enrich the original query with structured customer profile fields.
     prefs = customer["preferences"]
     account = customer["account"]
@@ -91,7 +91,7 @@ def run(query: str, customer_id: str, vectorstore=None, persona_vectorstore=None
     context = shared_pipeline(query, retrieved_chunks)
 
     # Combine persona context and knowledge base context
-    full_context = f"--- Customer Profile ---\n{persona_context}\n\n--- Knowledge Base ---\n{context}"
+    full_context = f"Customer Profile\n{persona_context}\n\nKnowledge Base\n{context}"
 
     # Generate personalised response
     customer_name = customer["personal_details"]["first_name"]
