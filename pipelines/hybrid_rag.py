@@ -16,6 +16,7 @@ CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 10      # chunks retrieved from each method before fusion
 RRF_K = 60      # RRF constant — standard value from the original paper
+PERSONA_TOP_K = 3  # persona chunks retrieved from each method when a customer is identified
 
 # Takes the two result lists and merges them into one ranked list. 
 # Each chunk gets a score - a chunk appearing near the top of both gets the highest combined score.
@@ -51,7 +52,31 @@ def build_bm25_index(vectorstore: Chroma):
     return bm25, corpus
 
 
-def run(query: str, vectorstore=None, bm25=None, corpus=None) -> dict:
+def load_persona_vectorstore():
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL,
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True},
+    )
+    return Chroma(
+        collection_name="customer_personas",
+        persist_directory=os.path.join(CHROMA_DIR, "customer_personas"),
+        embedding_function=embeddings,
+    )
+
+
+def build_persona_bm25_index(persona_vectorstore: Chroma, customer_id: str):
+    # Only this customer's own chunks — BM25 has no built-in metadata filter, so the corpus is pre-filtered
+    docs = persona_vectorstore.get(where={"customer_id": customer_id})
+    corpus = docs["documents"]
+    if not corpus:
+        return None, []
+    tokenised = [doc.lower().split() for doc in corpus]
+    bm25 = BM25Okapi(tokenised)
+    return bm25, corpus
+
+
+def run(query: str, vectorstore=None, bm25=None, corpus=None, customer_id: str = None, persona_vectorstore=None) -> dict:
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -70,11 +95,33 @@ def run(query: str, vectorstore=None, bm25=None, corpus=None) -> dict:
     top_bm25_indices = sorted(range(len(bm25_scores)), key=lambda i: bm25_scores[i], reverse=True)[:TOP_K]
     sparse_chunks = [corpus[i] for i in top_bm25_indices]
 
-    # Step 3 — Merge with Reciprocal Rank Fusion
+    # Step 2b — If a customer is identified, run the same dense+sparse fusion against their persona data
+    persona_chunks = []
+    if customer_id:
+        if persona_vectorstore is None:
+            persona_vectorstore = load_persona_vectorstore()
+
+        persona_dense_results = persona_vectorstore.similarity_search(
+            query, k=PERSONA_TOP_K, filter={"customer_id": customer_id}
+        )
+        persona_dense_chunks = [doc.page_content for doc in persona_dense_results]
+
+        persona_bm25, persona_corpus = build_persona_bm25_index(persona_vectorstore, customer_id)
+        persona_sparse_chunks = []
+        if persona_bm25 is not None:
+            persona_bm25_scores = persona_bm25.get_scores(tokenised_query)
+            top_persona_indices = sorted(
+                range(len(persona_bm25_scores)), key=lambda i: persona_bm25_scores[i], reverse=True
+            )[:PERSONA_TOP_K]
+            persona_sparse_chunks = [persona_corpus[i] for i in top_persona_indices]
+
+        persona_chunks = reciprocal_rank_fusion(persona_dense_chunks, persona_sparse_chunks)
+
+    # Step 3 — Merge KB results with Reciprocal Rank Fusion
     fused_chunks = reciprocal_rank_fusion(dense_chunks, sparse_chunks)
 
-    # Step 4 — Shared pipeline (rerank → repack → compress)
-    context = shared_pipeline(query, fused_chunks)
+    # Step 4 — Shared pipeline (rerank → repack → compress) over KB + persona results combined
+    context = shared_pipeline(query, fused_chunks + persona_chunks)
 
     # Step 5 — Generate response
     response = generate_response(query=query, context=context)
@@ -89,6 +136,7 @@ def run(query: str, vectorstore=None, bm25=None, corpus=None) -> dict:
         "retrieved_chunks": fused_chunks,
         "dense_chunks": dense_chunks,
         "sparse_chunks": sparse_chunks,
+        "persona_chunks": persona_chunks,
         "latency_seconds": latency,
     }
 

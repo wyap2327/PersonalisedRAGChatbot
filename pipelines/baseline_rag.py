@@ -10,6 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 10  # chunks retrieved before reranking narrows to 5
+PERSONA_TOP_K = 3  # persona chunks retrieved when a customer is identified
 
 
 def load_vectorstore(): # Connects to the ChromaDB collection
@@ -25,7 +26,20 @@ def load_vectorstore(): # Connects to the ChromaDB collection
     )
 
 
-def run(query: str, vectorstore=None) -> dict:
+def load_persona_vectorstore(): # Connects to the customer personas collection
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL,
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True},
+    )
+    return Chroma(
+        collection_name="customer_personas",
+        persist_directory=os.path.join(CHROMA_DIR, "customer_personas"),
+        embedding_function=embeddings,
+    )
+
+
+def run(query: str, vectorstore=None, customer_id: str = None, persona_vectorstore=None) -> dict:
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -35,8 +49,18 @@ def run(query: str, vectorstore=None) -> dict:
     results = vectorstore.similarity_search(query, k=TOP_K)
     retrieved_chunks = [doc.page_content for doc in results]
 
-    # Step 2 — Shared pipeline (rerank → repack → compress)
-    context = shared_pipeline(query, retrieved_chunks)
+    # Step 1b — If a customer is identified, retrieve their persona chunks the same plain way
+    persona_chunks = []
+    if customer_id:
+        if persona_vectorstore is None:
+            persona_vectorstore = load_persona_vectorstore()
+        persona_results = persona_vectorstore.similarity_search(
+            query, k=PERSONA_TOP_K, filter={"customer_id": customer_id}
+        )
+        persona_chunks = [doc.page_content for doc in persona_results]
+
+    # Step 2 — Shared pipeline (rerank → repack → compress) over KB + persona chunks combined
+    context = shared_pipeline(query, retrieved_chunks + persona_chunks)
 
     # Step 3 — Generate response
     response = generate_response(query=query, context=context)
@@ -49,6 +73,7 @@ def run(query: str, vectorstore=None) -> dict:
         "response": response,
         "context": context,
         "retrieved_chunks": retrieved_chunks,
+        "persona_chunks": persona_chunks,
         "latency_seconds": latency,
     }
 

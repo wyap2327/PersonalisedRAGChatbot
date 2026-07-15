@@ -11,6 +11,7 @@ CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 5 # chunks retrieved per query variant
 NUM_VARIANTS = 3 # number of alternative queries to generate
+PERSONA_TOP_K = 3  # persona chunks retrieved per query variant when a customer is identified
 
 
 def generate_query_variants(query: str) -> list[str]:
@@ -22,6 +23,7 @@ def generate_query_variants(query: str) -> list[str]:
     response = ollama.chat(
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
+        options={"temperature": 0},
     )
     raw = response["message"]["content"]
     variants = [line.strip() for line in raw.strip().split("\n") if line.strip()]
@@ -41,7 +43,20 @@ def load_vectorstore():
     )
 
 
-def run(query: str, vectorstore=None) -> dict:
+def load_persona_vectorstore():
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL,
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True},
+    )
+    return Chroma(
+        collection_name="customer_personas",
+        persist_directory=os.path.join(CHROMA_DIR, "customer_personas"),
+        embedding_function=embeddings,
+    )
+
+
+def run(query: str, vectorstore=None, customer_id: str = None, persona_vectorstore=None) -> dict:
     start = time.perf_counter()
 
     if vectorstore is None:
@@ -61,8 +76,23 @@ def run(query: str, vectorstore=None) -> dict:
                 seen.add(doc.page_content)
                 retrieved_chunks.append(doc.page_content)
 
-    # Step 3 — Shared pipeline (rerank → repack → compress)
-    context = shared_pipeline(query, retrieved_chunks)
+    # Step 2b — If a customer is identified, retrieve persona chunks for each query variant too
+    persona_chunks = []
+    if customer_id:
+        if persona_vectorstore is None:
+            persona_vectorstore = load_persona_vectorstore()
+        persona_seen = set()
+        for q in all_queries:
+            persona_results = persona_vectorstore.similarity_search(
+                q, k=PERSONA_TOP_K, filter={"customer_id": customer_id}
+            )
+            for doc in persona_results:
+                if doc.page_content not in persona_seen:
+                    persona_seen.add(doc.page_content)
+                    persona_chunks.append(doc.page_content)
+
+    # Step 3 — Shared pipeline (rerank → repack → compress) over KB + persona chunks combined
+    context = shared_pipeline(query, retrieved_chunks + persona_chunks)
 
     # Step 4 — Generate response
     response = generate_response(query=query, context=context)
@@ -76,6 +106,7 @@ def run(query: str, vectorstore=None) -> dict:
         "response": response,
         "context": context,
         "retrieved_chunks": retrieved_chunks,
+        "persona_chunks": persona_chunks,
         "latency_seconds": latency,
     }
 

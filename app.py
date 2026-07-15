@@ -118,11 +118,11 @@ def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
 
     if pipeline_name == "Baseline RAG":
         from pipelines.baseline_rag import run
-        return run(query=query, vectorstore=vs)
+        return run(query=query, vectorstore=vs, customer_id=customer_id, persona_vectorstore=load_persona_vectorstore())
 
     elif pipeline_name == "Multi-Query RAG":
         from pipelines.multiquery_rag import run
-        return run(query=query, vectorstore=vs)
+        return run(query=query, vectorstore=vs, customer_id=customer_id, persona_vectorstore=load_persona_vectorstore())
 
     elif pipeline_name == "Contextual RAG":
         from pipelines.contextual_rag import run
@@ -131,11 +131,11 @@ def run_pipeline(pipeline_name: str, query: str, customer_id: str) -> dict:
     elif pipeline_name == "Hybrid RAG":
         from pipelines.hybrid_rag import run
         bm25, corpus = load_bm25_index()
-        return run(query=query, vectorstore=vs, bm25=bm25, corpus=corpus)
+        return run(query=query, vectorstore=vs, bm25=bm25, corpus=corpus, customer_id=customer_id, persona_vectorstore=load_persona_vectorstore())
 
     elif pipeline_name == "Agentic RAG":
         from pipelines.agentic_rag import run
-        return run(query=query, vectorstore=vs)
+        return run(query=query, vectorstore=vs, customer_id=customer_id, persona_vectorstore=load_persona_vectorstore())
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -226,8 +226,10 @@ def chat_page():
     st.caption(f"Currently using: **{current_label}**")
     st.divider()
 
-    # Display chat history
-    for msg in st.session_state.messages:
+    current_messages = st.session_state.messages_by_pipeline[st.session_state.selected_pipeline]
+
+    # Display chat history (only for the currently selected system)
+    for msg in current_messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
             if msg["role"] == "assistant" and "latency" in msg:
@@ -236,7 +238,7 @@ def chat_page():
     # Chat input
     if prompt := st.chat_input("Ask a question about your order, returns, delivery..."):
         # Display user message
-        st.session_state.messages.append({"role": "user", "content": prompt})
+        current_messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
@@ -262,7 +264,7 @@ def chat_page():
             st.markdown(response)
             st.caption(f"Response time: {latency}s")
 
-        st.session_state.messages.append({
+        current_messages.append({
             "role": "assistant",
             "content": response,
             "latency": latency,

@@ -25,15 +25,15 @@ from pipelines import agentic_rag, baseline_rag, contextual_rag, hybrid_rag, mul
 from pipelines.hybrid_rag import build_bm25_index
 
 BASE_DIR = Path(__file__).parent
-#DATASET_PATH = BASE_DIR / "ragas_test_dataset.json"
-DATASET_PATH = BASE_DIR / "ragas_test_dataset_personalised.json"
+DATASET_PATH = BASE_DIR / "ragas_test_dataset.json"
+#DATASET_PATH = BASE_DIR / "ragas_test_dataset_personalised.json"
 RESULTS_DIR = BASE_DIR / "evaluation_results"
 
 #LLM_MODEL = "llama3.1:8b"
 LLM_MODEL = "qwen2.5:14b"
 #LLM_MODEL = "qwen2.5:7b"
 EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
-CUSTOMER_ID = "CUST-011"
+CUSTOMER_ID = None
 
 PIPELINES = [
     "baseline_rag",
@@ -98,29 +98,29 @@ def setup_ragas_metrics():
 
 def run_query(pipeline_name: str, query: str, kb_vs, persona_vs, bm25, corpus) -> dict:
     if pipeline_name == "baseline_rag":
-        return baseline_rag.run(query=query, vectorstore=kb_vs)
+        return baseline_rag.run(query=query, vectorstore=kb_vs, customer_id=CUSTOMER_ID, persona_vectorstore=persona_vs)
     elif pipeline_name == "multiquery_rag":
-        return multiquery_rag.run(query=query, vectorstore=kb_vs)
+        return multiquery_rag.run(query=query, vectorstore=kb_vs, customer_id=CUSTOMER_ID, persona_vectorstore=persona_vs)
     elif pipeline_name == "contextual_rag":
-        return contextual_rag.run(query=query, customer_id=CUSTOMER_ID, vectorstore=kb_vs, persona_vectorstore=persona_vs)
+        # Contextual RAG requires a valid customer_id — falls back to a fixed default when
+        # CUSTOMER_ID is None (e.g. the non-personalised dataset), unlike the other 4 pipelines
+        # which correctly skip persona retrieval entirely in that case.
+        return contextual_rag.run(query=query, customer_id=CUSTOMER_ID or "CUST-001", vectorstore=kb_vs, persona_vectorstore=persona_vs)
     elif pipeline_name == "hybrid_rag":
-        return hybrid_rag.run(query=query, vectorstore=kb_vs, bm25=bm25, corpus=corpus)
+        return hybrid_rag.run(query=query, vectorstore=kb_vs, bm25=bm25, corpus=corpus, customer_id=CUSTOMER_ID, persona_vectorstore=persona_vs)
     elif pipeline_name == "agentic_rag":
-        return agentic_rag.run(query=query, vectorstore=kb_vs)
+        return agentic_rag.run(query=query, vectorstore=kb_vs, customer_id=CUSTOMER_ID, persona_vectorstore=persona_vs)
 
 # Pulls the retrieved chunks out of the result dict so RAGAS can score them. Each pipeline stores chunks
 # slightly differently, so this handles each case.
 def extract_contexts(pipeline_name: str, result: dict) -> list[str]:
-    if pipeline_name == "contextual_rag":
-        chunks = result.get("persona_chunks", []) + result.get("retrieved_chunks", [])
-        return chunks or [result.get("context", "")]
-    elif pipeline_name == "agentic_rag":
+    if pipeline_name == "agentic_rag":
         raw = result.get("context", "")
         if not raw or raw == "No tool calls made.":
             return ["No context retrieved."]
         return [p.strip() for p in raw.split("\n\n") if p.strip()] or [raw]
     else:
-        chunks = result.get("retrieved_chunks", [])
+        chunks = result.get("persona_chunks", []) + result.get("retrieved_chunks", [])
         return chunks or [result.get("context", "")]
 
 
@@ -236,7 +236,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--pipeline", choices=PIPELINES)
     args = parser.parse_args()
-    pipelines_to_run = args.pipelines or PIPELINES
+    pipelines_to_run = [args.pipeline] if args.pipeline else PIPELINES
 
     print("\nRAGAS Evaluation")
     if args.dry_run:

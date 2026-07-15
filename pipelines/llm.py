@@ -24,5 +24,6 @@ Customer question: {query}"""
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user",   "content": user_message},
         ],
+        options={"temperature": 0},
     )
     return response["message"]["content"]
