@@ -16,47 +16,47 @@ EMBEDDING_MODEL = "BAAI/bge-base-en-v1.5"
 TOP_K = 5
 PERSONA_TOP_K = 3
 
-_vectorstore = None
-_persona_vectorstore = None
-_customer_id = None
+cached_vectorstore = None
+cached_persona_vectorstore = None
+active_customer_id = None
 
 
-def _get_vectorstore():
-    global _vectorstore
-    if _vectorstore is None:
+def get_vectorstore():
+    global cached_vectorstore
+    if cached_vectorstore is None:
         embeddings = HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={"device": "cpu"},
             encode_kwargs={"normalize_embeddings": True},
         )
-        _vectorstore = Chroma(
+        cached_vectorstore = Chroma(
             collection_name="knowledge_base",
             persist_directory=os.path.join(CHROMA_DIR, "knowledge_base"),
             embedding_function=embeddings,
         )
-    return _vectorstore
+    return cached_vectorstore
 
 
-def _get_persona_vectorstore():
-    global _persona_vectorstore
-    if _persona_vectorstore is None:
+def get_persona_vectorstore():
+    global cached_persona_vectorstore
+    if cached_persona_vectorstore is None:
         embeddings = HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={"device": "cpu"},
             encode_kwargs={"normalize_embeddings": True},
         )
-        _persona_vectorstore = Chroma(
+        cached_persona_vectorstore = Chroma(
             collection_name="customer_personas",
             persist_directory=os.path.join(CHROMA_DIR, "customer_personas"),
             embedding_function=embeddings,
         )
-    return _persona_vectorstore
+    return cached_persona_vectorstore
 
 
 @tool
 def SearchKnowledgeBase(query: str) -> str:
     """Search the general knowledge base for company policies, FAQs, delivery, returns, loyalty programme, and product information."""
-    vs = _get_vectorstore()
+    vs = get_vectorstore()
     results = vs.similarity_search(query, k=TOP_K)
     chunks = [doc.page_content for doc in results]
     return "\n\n---\n\n".join(chunks) if chunks else "No relevant information found."
@@ -65,10 +65,10 @@ def SearchKnowledgeBase(query: str) -> str:
 @tool
 def GetCustomerProfile(query: str) -> str:
     """Look up the current customer's own profile: membership tier, loyalty points, purchase history, or past support interactions."""
-    if not _customer_id:
+    if not active_customer_id:
         return "No customer is currently identified."
-    vs = _get_persona_vectorstore()
-    results = vs.similarity_search(query, k=PERSONA_TOP_K, filter={"customer_id": _customer_id})
+    vs = get_persona_vectorstore()
+    results = vs.similarity_search(query, k=PERSONA_TOP_K, filter={"customer_id": active_customer_id})
     chunks = [doc.page_content for doc in results]
     return "\n\n---\n\n".join(chunks) if chunks else "No profile information found."
 
@@ -88,13 +88,13 @@ def run(query: str, vectorstore=None, customer_id: str = None, persona_vectorsto
     start = time.perf_counter()
 
     if vectorstore is not None:
-        global _vectorstore
-        _vectorstore = vectorstore
+        global cached_vectorstore
+        cached_vectorstore = vectorstore
 
-    global _customer_id, _persona_vectorstore
-    _customer_id = customer_id
+    global active_customer_id, cached_persona_vectorstore
+    active_customer_id = customer_id
     if persona_vectorstore is not None:
-        _persona_vectorstore = persona_vectorstore
+        cached_persona_vectorstore = persona_vectorstore
 
     tools = [SearchKnowledgeBase, GetFullDocument]
     if customer_id:

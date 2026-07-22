@@ -214,6 +214,10 @@ def chat_page():
             type="primary",
         )
 
+        if st.button("Clear Chat", use_container_width=True):
+            st.session_state.messages_by_pipeline = {p: [] for p in PIPELINE_OPTIONS}
+            st.rerun()
+
         st.divider()
         if st.button("Log Out", use_container_width=True):
             for key in list(st.session_state.keys()):

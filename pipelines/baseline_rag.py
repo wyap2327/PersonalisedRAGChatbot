@@ -45,11 +45,11 @@ def run(query: str, vectorstore=None, customer_id: str = None, persona_vectorsto
     if vectorstore is None:
         vectorstore = load_vectorstore()
 
-    # Step 1 — Retrieve top-k chunks from ChromaDB
+    # Retrieve top-k chunks from ChromaDB
     results = vectorstore.similarity_search(query, k=TOP_K)
     retrieved_chunks = [doc.page_content for doc in results]
 
-    # Step 1b — If a customer is identified, retrieve their persona chunks the same plain way
+    # If a customer is identified, retrieve their persona chunks the same plain way
     persona_chunks = []
     if customer_id:
         if persona_vectorstore is None:
@@ -59,10 +59,9 @@ def run(query: str, vectorstore=None, customer_id: str = None, persona_vectorsto
         )
         persona_chunks = [doc.page_content for doc in persona_results]
 
-    # Step 2 — Shared pipeline (rerank → repack → compress) over KB + persona chunks combined
+    # Shared pipeline (rerank → repack → compress) over KB + persona chunks combined
     context = shared_pipeline(query, retrieved_chunks + persona_chunks)
 
-    # Step 3 — Generate response
     response = generate_response(query=query, context=context)
 
     latency = round(time.perf_counter() - start, 3)
