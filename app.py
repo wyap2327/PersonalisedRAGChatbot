@@ -21,7 +21,7 @@ LOGS_DIR = os.path.join(BASE_DIR, "logs")
 os.makedirs(LOGS_DIR, exist_ok=True)
 LOG_FILE = os.path.join(LOGS_DIR, "session_log.jsonl")
 
-SURVEY_LINK = "https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=8l9CbGVo30Kk245q9jSBPU0_B0gWdLJLiBUgwn0d6IVUQktHTlJQTDZNUENKUlJRRE8zWFpENllSRC4u"
+SURVEY_LINK = ""  # human-evaluation survey link (removed for public release)
 
 # Mapping of Participant IDs to Customer IDs
 PARTICIPANT_MAP = {
@@ -205,14 +205,15 @@ def chat_page():
             st.session_state.selected_pipeline = selected
             st.rerun()
 
-        st.divider()
-        st.markdown("**Completed a system?**")
-        st.link_button(
-            "Start the survey",
-            url=SURVEY_LINK,
-            use_container_width=True,
-            type="primary",
-        )
+        if SURVEY_LINK:
+            st.divider()
+            st.markdown("**Completed a system?**")
+            st.link_button(
+                "Start the survey",
+                url=SURVEY_LINK,
+                use_container_width=True,
+                type="primary",
+            )
 
         if st.button("Clear Chat", use_container_width=True):
             st.session_state.messages_by_pipeline = {p: [] for p in PIPELINE_OPTIONS}

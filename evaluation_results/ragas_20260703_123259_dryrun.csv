@@ -1,6 +1,0 @@
-pipeline,faithfulness,answer_relevancy,context_precision,context_recall,avg_latency_seconds
-baseline_rag,nan,nan,nan,nan,29.698
-multiquery_rag,nan,nan,nan,nan,45.856
-contextual_rag,nan,nan,nan,nan,40.796
-hybrid_rag,nan,nan,nan,nan,25.218
-agentic_rag,nan,nan,nan,nan,77.104
